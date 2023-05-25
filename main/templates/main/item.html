@@ -1,0 +1,13 @@
+{% extends "main/base.html" %}
+{% block title %}{{item.name}}{% endblock %}
+{% block main %}
+
+<div class="container">
+	<h2 class="mt-2">Полное описание вакансии</h2>
+	<br>
+	{{item.text|safe}}
+
+	<a class="btn btn-dark" href="/">Назад</a>
+</div>
+
+{% endblock %}
