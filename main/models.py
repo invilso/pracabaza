@@ -1,8 +1,19 @@
 from django.db import models
 from tinymce import models as tinymce_models
 
+class State(models.Model):
+	name = models.CharField(verbose_name='Название', max_length=300, unique=True)
+
+	def __str__(self):
+		return self.name
+
+	class Meta:
+		verbose_name = 'Регион'
+		verbose_name_plural = 'Регионы'
+
 class City(models.Model):
 	name = models.CharField(verbose_name="Название города", max_length=200, unique=True)
+	state = models.ForeignKey(State, on_delete=models.SET_NULL, null=True, blank=True, verbose_name="Регион")
 
 	def __str__(self):
 		return self.name
@@ -31,6 +42,27 @@ class InfoLabels(models.Model):
 	class Meta:
 		verbose_name = 'Информационная табличка'
 		verbose_name_plural = 'Информационные таблички'
+  
+class Category(models.Model):
+	name = models.CharField(verbose_name='Название', max_length=300)
+
+	def __str__(self):
+		return self.name
+
+	class Meta:
+		ordering = ['name']
+		verbose_name = 'Категория'
+		verbose_name_plural = 'Категории'
+  
+class Index(models.Model):
+	name = models.CharField(verbose_name='Индекс', max_length=300, unique=True)
+
+	def __str__(self):
+		return self.name
+
+	class Meta:
+		verbose_name = 'Индекс'
+		verbose_name_plural = 'Индексы'
 
 class Vacancy(models.Model):
 	name = models.CharField(verbose_name='Название', max_length=300)
@@ -38,10 +70,13 @@ class Vacancy(models.Model):
 	price = models.FloatField(verbose_name='Ставка(zlot)')
 	sex = models.ManyToManyField(Sex, verbose_name='Пол')
 	text = tinymce_models.HTMLField()
+	category = models.ForeignKey(Category, on_delete=models.SET_NULL, null=True, blank=True, verbose_name="Категория")
+	index = models.ForeignKey(Index, on_delete=models.SET_NULL, null=True, blank=True, verbose_name="Индекс")
 
 	def __str__(self):
-		return '{} | {}'.format(self.name, self.city)
+		return f'{self.index} - {self.name} | {self.city}'
 
 	class Meta:
+		ordering = ['name']
 		verbose_name = 'Вакансия'
 		verbose_name_plural = 'Вакансии'

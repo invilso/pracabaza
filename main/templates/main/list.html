@@ -36,6 +36,16 @@
 							{% endfor %}
 						</select>
 					</div>
+					<div class="col-sm-5 col-md-5 mb-1">
+						<select name='category' id='id_category' class="form-select" aria-label="Специальность">
+							<option value="">Все специальности</option>
+							{% for category in categoryes %}
+							<option value="{{ category.pk }}"
+								{% if category.pk|stringformat:"s" == request.GET.category %}selected{% endif %}>
+								{{ category.name }}</option>
+							{% endfor %}
+						</select>
+					</div>
 
 					<div class="col-sm-5 col-md-5 mb-1">
 						<select name='order' id='id_order' class="form-select" aria-label="Сортировка">
@@ -92,7 +102,7 @@
 	  <tbody>
 	  	{% for item in items %}
 		<tr>
-			<td><a href="{% url 'item' item.id %}"><strong>{{item.name}}</strong></a></td>
+			<td><a href="{% url 'item' item.id %}"><strong>{% if item.index %} {{item.index}} - {% endif %}{{item.name}}</strong></a></td>
 		    <td>{{item.city}}</td>
 		    {% comment %} <td>{{item.price|floatformat:"2"}}</td> {% endcomment %}
 			<td>
@@ -124,6 +134,13 @@
     $(document).ready(function() {
         $('#id_city').select2({
             placeholder: "Поиск города",
+            allowClear: true,
+			theme: "bootstrap"
+        });
+    });
+	$(document).ready(function() {
+        $('#id_category').select2({
+            placeholder: "Поиск специальности",
             allowClear: true,
 			theme: "bootstrap"
         });
