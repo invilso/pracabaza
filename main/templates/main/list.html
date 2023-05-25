@@ -94,6 +94,7 @@
 	  <thead>
 	    <tr>
 	      <th scope="col">Название</th>
+		  <th scope="col">Регион</th>
 	      <th scope="col">Город</th>
 	      <th scope="col">Ставка</th>
 	      <th scope="col">Пол</th>
@@ -103,6 +104,7 @@
 	  	{% for item in items %}
 		<tr>
 			<td><a href="{% url 'item' item.id %}"><strong>{% if item.index %} {{item.index}} - {% endif %}{{item.name}}</strong></a></td>
+			<td>{{item.state}}</td>
 		    <td>{{item.city}}</td>
 		    {% comment %} <td>{{item.price|floatformat:"2"}}</td> {% endcomment %}
 			<td>
@@ -134,6 +136,13 @@
     $(document).ready(function() {
         $('#id_city').select2({
             placeholder: "Поиск города",
+            allowClear: true,
+			theme: "bootstrap"
+        });
+    });
+	$(document).ready(function() {
+        $('#id_state').select2({
+            placeholder: "Поиск региона",
             allowClear: true,
 			theme: "bootstrap"
         });

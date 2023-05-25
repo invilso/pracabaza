@@ -9,6 +9,7 @@ def ListView(request):
 	sexes = Sex.objects.all()
 	labels = InfoLabels.objects.all()
 	categoryes = Category.objects.all().order_by('name')
+	states = State.objects.all().order_by('name')
 
 	if request.method == 'GET':
 		action = request.GET.get('clear')
@@ -22,6 +23,10 @@ def ListView(request):
 		category = request.GET.get('category')
 		if category:
 			items = items.filter(category__pk=category)
+   
+		state = request.GET.get('state')
+		if state:
+			items = items.filter(state__pk=state)
 		
 		sex = request.GET.get('sex')
 		if sex:
@@ -33,21 +38,14 @@ def ListView(request):
 		elif answer == "2":
 			items = items.order_by('price')
 
-	for city in cities:
-		if city.state:
-			city.name = f'{city.state}, {city.name}'
-
-	for item in items:
-		if item.city.state:
-			item.city.name = f'{item.city.state}, {item.city.name}'
-
 	
 	context = {
 		'items':items,
 		'cities':cities,
 		'sexes':sexes,
 		'labels':labels,
-		'categoryes':categoryes
+		'categoryes':categoryes,
+		'states': states
 	}
 
 	return render(request, 'main/list.html', context)

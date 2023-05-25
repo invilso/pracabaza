@@ -8,12 +8,12 @@ class State(models.Model):
 		return self.name
 
 	class Meta:
+		ordering = ['name']
 		verbose_name = 'Регион'
 		verbose_name_plural = 'Регионы'
 
 class City(models.Model):
 	name = models.CharField(verbose_name="Название города", max_length=200, unique=True)
-	state = models.ForeignKey(State, on_delete=models.SET_NULL, null=True, blank=True, verbose_name="Регион")
 
 	def __str__(self):
 		return self.name
@@ -66,7 +66,8 @@ class Index(models.Model):
 
 class Vacancy(models.Model):
 	name = models.CharField(verbose_name='Название', max_length=300)
-	city = models.ForeignKey(City, on_delete=models.SET_NULL, null=True)
+	state = models.ForeignKey(State, on_delete=models.SET_NULL, null=True, blank=True, verbose_name="Регион")
+	city = models.ForeignKey(City, on_delete=models.SET_NULL, null=True)	
 	price = models.FloatField(verbose_name='Ставка(zlot)')
 	sex = models.ManyToManyField(Sex, verbose_name='Пол')
 	text = tinymce_models.HTMLField()
