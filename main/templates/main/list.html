@@ -95,7 +95,6 @@
 	  <thead>
 	    <tr>
 	      <th scope="col">Название</th>
-		  <th scope="col">Просмотров</th>
 		  <th scope="col">Регион</th>
 	      <th scope="col">Место работы</th>
 	      <th scope="col">Ставка</th>
@@ -106,7 +105,6 @@
 	  	{% for item in items %}
 		<tr>
 			<td><a href="{% url 'item' item.id %}"><strong>{% if item.index %} {{item.index}} - {% endif %}{{item.name}}</strong></a></td>
-			<td>{{item.views}}</td>
 			<td>{{item.state}}</td>
 		    <td>{{item.city}}</td>
 		    {% comment %} <td>{{item.price|floatformat:"2"}}</td> {% endcomment %}
