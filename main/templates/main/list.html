@@ -27,12 +27,12 @@
 			<form method="get">
 				<div class="row flex-column">
 					<div class="col-sm-5 col-md-5 mb-1">
-						<select name='city' id='id_city' class="form-select" aria-label="Город">
+						<select name='state' id='id_state' class="form-select" aria-label="Регион">
 							<option value="">Все города</option>
-							{% for city in cities %}
-							<option value="{{ city.pk }}"
-								{% if city.pk|stringformat:"s" == request.GET.city %}selected{% endif %}>
-								{{ city.name }}</option>
+							{% for state in states %}
+							<option value="{{ state.pk }}"
+								{% if state.pk|stringformat:"s" == request.GET.state %}selected{% endif %}>
+								{{ state.name }}</option>
 							{% endfor %}
 						</select>
 					</div>
@@ -42,7 +42,8 @@
 							{% for category in categoryes %}
 							<option value="{{ category.pk }}"
 								{% if category.pk|stringformat:"s" == request.GET.category %}selected{% endif %}>
-								{{ category.name }}</option>
+								{{ category.name }} ({{ category.total_vacancies }})
+							</option>
 							{% endfor %}
 						</select>
 					</div>
@@ -94,8 +95,9 @@
 	  <thead>
 	    <tr>
 	      <th scope="col">Название</th>
+		  <th scope="col">Просмотров</th>
 		  <th scope="col">Регион</th>
-	      <th scope="col">Город</th>
+	      <th scope="col">Место работы</th>
 	      <th scope="col">Ставка</th>
 	      <th scope="col">Пол</th>
 	    </tr>
@@ -104,6 +106,7 @@
 	  	{% for item in items %}
 		<tr>
 			<td><a href="{% url 'item' item.id %}"><strong>{% if item.index %} {{item.index}} - {% endif %}{{item.name}}</strong></a></td>
+			<td>{{item.views}}</td>
 			<td>{{item.state}}</td>
 		    <td>{{item.city}}</td>
 		    {% comment %} <td>{{item.price|floatformat:"2"}}</td> {% endcomment %}

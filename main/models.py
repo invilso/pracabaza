@@ -66,13 +66,15 @@ class Index(models.Model):
 
 class Vacancy(models.Model):
 	name = models.CharField(verbose_name='Название', max_length=300)
-	state = models.ForeignKey(State, on_delete=models.SET_NULL, null=True, blank=True, verbose_name="Регион")
-	city = models.ForeignKey(City, on_delete=models.SET_NULL, null=True)	
+	city = models.ForeignKey(City, on_delete=models.CASCADE, verbose_name="Место работы")
+	state = models.ForeignKey(State, on_delete=models.CASCADE, verbose_name="Регион")
 	price = models.FloatField(verbose_name='Ставка(zlot)')
 	sex = models.ManyToManyField(Sex, verbose_name='Пол')
+	category = models.ForeignKey(Category, on_delete=models.CASCADE, verbose_name="Категория")
+	index = models.ForeignKey(Index, on_delete=models.CASCADE, verbose_name="Индекс")
 	text = tinymce_models.HTMLField()
-	category = models.ForeignKey(Category, on_delete=models.SET_NULL, null=True, blank=True, verbose_name="Категория")
-	index = models.ForeignKey(Index, on_delete=models.SET_NULL, null=True, blank=True, verbose_name="Индекс")
+	active = models.BooleanField(verbose_name='Активно', default=True)
+	views = models.IntegerField(default=0)
 
 	def __str__(self):
 		return f'{self.index} - {self.name} | {self.city}'
