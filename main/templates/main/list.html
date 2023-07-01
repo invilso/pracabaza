@@ -1,11 +1,11 @@
 {% extends "main/base.html" %}
 {% load static %}
-{% block title %}Вакансии для работы{% endblock %}
+{% block title %}Вакансии для работы{% endblock title %}
 {% block head %}
 
 <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
 <link rel="stylesheet" type="text/css" href="{% static 'main/css/select2-bootstrap.css' %}">
-{% endblock %}
+{% endblock head %}
 
 {% block main %}
 
@@ -27,7 +27,7 @@
 			<form method="get">
 				<div class="row flex-column">
 					<div class="col-sm-5 col-md-5 mb-1">
-						<select name='state' id='id_state' class="form-select" aria-label="Регион">
+						<select name="state" id="id_state" class="form-select" aria-label="Регион">
 							<option value="">Все города</option>
 							{% for state in states %}
 							<option value="{{ state.pk }}"
@@ -37,7 +37,7 @@
 						</select>
 					</div>
 					<div class="col-sm-5 col-md-5 mb-1">
-						<select name='category' id='id_category' class="form-select" aria-label="Специальность">
+						<select name="category" id="id_category" class="form-select" aria-label="Специальность">
 							<option value="">Все специальности</option>
 							{% for category in categoryes %}
 							<option value="{{ category.pk }}"
@@ -49,7 +49,7 @@
 					</div>
 
 					<div class="col-sm-5 col-md-5 mb-1">
-						<select name='order' id='id_order' class="form-select" aria-label="Сортировка">
+						<select name="order" id="id_order" class="form-select" aria-label="Сортировка">
 							<option value="1" {% if '1' == request.GET.order %}selected{% endif %}>Ставка по возрастанию</option>
 							<option value="2" {% if '2' == request.GET.order %}selected{% endif %}>Ставка по убыванию</option>
 						</select>
@@ -60,7 +60,7 @@
 						<div class="row">
 							{% for sex in sexes %}
 							<div class="col">
-								<input name="sex" id="id_sex{{ sex.pk }}" class="form-check-input" type="radio" value="{{ sex.pk }}" {% if sex.pk|stringformat:"s" == request.GET.sex or request.GET.sex == ''%}checked{% endif %}>
+								<input name="sex" id="id_sex{{ sex.pk }}" class="form-check-input" type="radio" value="{{ sex.pk }}" {% if sex.pk|stringformat:"s" == request.GET.sex or request.GET.sex == '' %}checked{% endif %}>
 								<label class="form-check-label" for="id_sex{{ sex.pk }}">{{ sex.name }}</label>
 							</div>
 							{% endfor %}
@@ -70,6 +70,7 @@
 					<div class="col-sm-5 col-md-5 mb-1">
 						<button class="btn btn-dark" style="margin-right: 5pt;">Найти</button>
 						<button name='clear' value="true" class="btn btn-outline-dark">Сбросить</button>
+						<a href="{% url 'main:create' %}" class="btn btn-dark">Добавить вакансию</a>
 					</div>
 				</div>
 			</form>
@@ -104,9 +105,9 @@
 	  <tbody>
 	  	{% for item in items %}
 		<tr>
-			<td><a href="{% url 'item' item.id %}"><strong>{% if item.index %} {{item.index}} - {% endif %}{{item.name}}</strong></a></td>
-			<td>{{item.state}}</td>
-		    <td>{{item.city}}</td>
+			<td><a href="{% url 'main:item' item.id %}"><strong>{% if item.index %} {{ item.index }} - {% endif %}{{ item.name }}</strong></a></td>
+			<td>{{ item.state }}</td>
+		    <td>{{ item.city }}</td>
 		    {% comment %} <td>{{item.price|floatformat:"2"}}</td> {% endcomment %}
 			<td>
 			{% if item.price|floatformat == item.price|floatformat:"0" %}
@@ -118,7 +119,7 @@
 		    <!-- <td>{% if item.sex == "Мужчина" %}М{% elif item.sex == "Женщина" %}Ж{% else %}М/Ж{% endif %}</td> -->
 			<td>
 		    {% for i in item.sex.all %}
-		    	{{i}}
+		    	{{ i }}
 		    {% endfor %}
 			</td>
 		</tr>
@@ -128,7 +129,7 @@
 
 </div>
 
-{% endblock %}
+{% endblock main %}
 
 {% block scripts %}
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
@@ -165,4 +166,4 @@
 		$('#id_city').select2();
 	}); {% endcomment %}
 </script>
-{% endblock %}
+{% endblock scripts %}

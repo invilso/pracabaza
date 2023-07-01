@@ -1,0 +1,176 @@
+{% extends "main/base.html" %}
+{% load static %}
+{% block title %}Добавить вакансию{% endblock title %}
+{% block head %}
+
+<link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+<link rel="stylesheet" type="text/css" href="{% static 'main/css/select2-bootstrap.css' %}">
+<script src="{% static 'tinymce/tinymce.min.js' %}" referrerpolicy="origin"></script>
+{% comment %} <script src="https://cdn.tiny.cloud/1/vt797b9pvger8tkwarh2od7zrc75beo0s1rfwpvo4tyz1qlv/tinymce/6/tinymce.min.js" referrerpolicy="origin"></script> {% endcomment %}
+
+{% endblock head %}
+
+{% block main %}
+
+<div class="container">
+	<div class="row align-items-start">
+		<div class="col">
+			<h2 class="mt-2">Добавить вакансию</h2>
+		</div>
+		<div class="col-auto">
+			<div class="row justify-content-end">
+				{% for item in labels %}
+				{{ item.text|safe }}
+				{% endfor %}
+			</div>
+		</div>
+	</div>
+	<div class="row align-items-start">
+		<div class="col">
+			<form method="POST" action="{% url 'main:create' %}" enctype="multipart/form-data">
+				{% csrf_token %}
+				<div class="col-sm-12 col-md-12 mb-1">
+					{% comment %} <select name="state" id="id_state" class="form-select" aria-label="Регион">
+						<option value="">Все города</option>
+						{% for state in states %}
+						<option value="{{ state.pk }}"
+							{% if state.pk|stringformat:"s" == request.GET.state %}selected{% endif %}>
+							{{ state.name }}</option>
+						{% endfor %}
+					</select> {% endcomment %}
+					
+					<div class="form-group">
+						<label for="name">Название:</label>
+						<input type="text" name="name" id="name" class="form-control">
+					</div>
+					
+					<div class="form-group">
+						<label for="city">Место работы:</label>
+						<select name="city" id="city" class="form-select fk-field" aria-label="Место работы">
+						{% for city in cities %}
+						<option value="{{ city.name }}">{{ city.name }}</option>
+						{% endfor %}
+						</select>
+					</div>
+					
+					<div class="form-group">
+						<label for="state">Регион:</label>
+						<select name="state" id="state" class="form-select fk-field">
+						{% for state in states %}
+						<option value="{{ state.name }}">{{ state.name }}</option>
+						{% endfor %}
+						</select>
+					</div>
+					
+					<div class="form-group">
+						<label for="price">Ставка(zlot):</label>
+						<input type="number" name="price" id="price" class="form-control">
+					</div>
+					
+					<div class="form-group">
+						<label for="sex">Пол:</label>
+						<select name="sex" id="sex" class="form-control" multiple>
+						{% for sex in sexes %}
+						<option value="{{ sex.name }}">{{ sex.name }}</option>
+						{% endfor %}
+						</select>
+					</div>
+					
+					<div class="form-group">
+						<label for="category">Специальность:</label>
+						<select name="category" id="category" class="form-select fk-field">
+						{% for category in categoryes %}
+						<option value="{{ category.name }}">{{ category.name }}</option>
+						{% endfor %}
+						</select>
+					</div>
+					
+					<div class="form-group">
+						<label for="index">Индекс:</label>
+						<select name="index" id="index" class="form-select fk-field">
+						{% for index in indexes %}
+						<option value="{{ index.name }}">{{ index.name }}</option>
+						{% endfor %}
+						</select>
+					</div>
+					
+					<div class="form-group">
+						<label for="text">Текст:</label>
+						<textarea name="text" id="text" class="form-control"></textarea>
+					</div>
+				</div>
+				<button type="submit" class="btn btn-primary">Сохранить</button>
+			</form>
+		</div>
+		<div class="col-2">
+            <div class="row flex-column justify-content-end">
+				
+			</div>
+        </div>
+	</div>
+</div>
+
+{% endblock main %}
+
+{% block scripts %}
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+<script>
+    tinymce.init({
+      selector: 'textarea',
+      plugins: 'anchor autolink charmap codesample emoticons image link lists media searchreplace table visualblocks wordcount checklist mediaembed casechange export formatpainter pageembed linkchecker a11ychecker tinymcespellchecker permanentpen powerpaste advtable advcode editimage tinycomments tableofcontents footnotes mergetags autocorrect typography inlinecss',
+      toolbar: 'undo redo | blocks fontfamily fontsize | bold italic underline strikethrough | link image media table mergetags | addcomment showcomments | spellcheckdialog a11ycheck typography | align lineheight | checklist numlist bullist indent outdent | emoticons charmap | removeformat',
+      tinycomments_mode: 'embedded',
+      tinycomments_author: 'Author name',
+      mergetags_list: [
+        { value: 'First.Name', title: 'First Name' },
+        { value: 'Email', title: 'Email' },
+      ]
+    });
+  </script>
+<script>
+	$(document).ready(function() {
+		// Инициализация Select2
+		$('.fk-field').select2({
+			tags: true, // Разрешение создания новых тегов
+			tokenSeparators: [','], // Разделители для создания новых тегов
+			theme: "bootstrap",
+			createTag: function (params) {
+				var term = $.trim(params.term);
+	
+				if (term === '') {
+					return null;
+				}
+	
+				return {
+					id: term,
+					text: term,
+					newTag: true // Отметка о новом теге
+				}
+			},
+			templateResult: function (data) {
+				var $result = $('<span></span>');
+	
+				$result.text(data.text);
+	
+				if (data.newTag) {
+					$result.append(' <em>(Новое)</em>');
+				}
+	
+				return $result;
+			},
+			templateSelection: function (data) {
+				var $selection = $('<span></span>');
+	
+				$selection.text(data.text);
+	
+				if (data.newTag) {
+					$selection.append(' <em>(Новое)</em>');
+				}
+	
+				return $selection;
+			}
+		});
+	});
+	</script>
+{% endblock scripts %}

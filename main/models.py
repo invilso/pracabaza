@@ -24,7 +24,7 @@ class City(models.Model):
 		verbose_name_plural = 'Список городов'
 
 class Sex(models.Model):
-	name = models.CharField(verbose_name='Пол', max_length=100)
+	name = models.CharField(verbose_name='Пол', max_length=100, unique=True)
 
 	def __str__(self):
 		return self.name
@@ -44,7 +44,7 @@ class InfoLabels(models.Model):
 		verbose_name_plural = 'Информационные таблички'
   
 class Category(models.Model):
-	name = models.CharField(verbose_name='Название', max_length=300)
+	name = models.CharField(verbose_name='Название', max_length=300, unique=True)
 
 	def __str__(self):
 		return self.name
