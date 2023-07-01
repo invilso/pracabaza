@@ -125,7 +125,13 @@
 		</tr>
 	    {% endfor %}
 	  </tbody>
+	  
 	</table>
+	{% if not items %}
+		<div class="text-center">
+			<h2>В этом регионе нет вакансий по Вашему запросу!</h2>
+		</div>
+	{% endif %}
 
 </div>
 
