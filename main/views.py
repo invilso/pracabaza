@@ -89,7 +89,7 @@ def create_view(request):
             state=state,
             category=category,
             index=index,
-            price=price,
+            price=float(price),
             text=text,
             active=active,
         )
