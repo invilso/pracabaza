@@ -8,6 +8,9 @@
 	{{ item.text|safe }}
 
 	<a class="btn btn-dark" href="{% url 'main:list' %}">Назад</a>
+	{% if user.is_authenticated %}
+	<a class="btn btn-primary" href="{% url 'main:graph' id=item.id %}">Статистика</a>
+	{% endif %}
 </div>
 
 {% endblock main %}

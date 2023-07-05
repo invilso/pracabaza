@@ -1,0 +1,15 @@
+{% extends "main/base.html" %}
+{% block title %}{{ item.name }}{% endblock title %}
+{% block main %}
+
+<div class="container">
+	<h2 class="mt-2">Статистика</h2>
+	<br>
+	<div>
+		{{ plot_div|safe }}
+	</div>
+
+	<a class="btn btn-dark" href="{% url 'main:list' %}">Назад</a>
+</div>
+
+{% endblock main %}

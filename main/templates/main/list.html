@@ -1,6 +1,6 @@
 {% extends "main/base.html" %}
 {% load static %}
-{% block title %}Вакансии для работы{% endblock title %}
+{% block title %}Вакансии{% endblock title %}
 {% block head %}
 
 <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
@@ -12,7 +12,7 @@
 <div class="container">
 	<div class="row align-items-start">
 		<div class="col">
-			<h2 class="mt-2">Вакансии для работы</h2>
+			<a href="{% url 'main:create' %}" class="mt-2 text-dark h2 text-decoration-none">Вакансии</a>
 		</div>
 		<div class="col-auto">
 			<div class="row justify-content-end">
@@ -70,7 +70,6 @@
 					<div class="col-sm-5 col-md-5 mb-1">
 						<button class="btn btn-dark" style="margin-right: 5pt;">Найти</button>
 						<button name='clear' value="true" class="btn btn-outline-dark">Сбросить</button>
-						<a href="{% url 'main:create' %}" class="btn btn-dark">Добавить вакансию</a>
 					</div>
 				</div>
 			</form>

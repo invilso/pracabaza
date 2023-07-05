@@ -64,6 +64,15 @@ class Index(models.Model):
 		verbose_name = 'Индекс'
 		verbose_name_plural = 'Индексы'
 
+class View(models.Model):
+    ip = models.CharField(null=True, blank=True)
+    date = models.DateField(auto_now_add=True)
+    country = models.CharField(null=True, blank=True)
+    region_name = models.CharField(null=True, blank=True)
+    city = models.CharField(null=True, blank=True)
+    isp = models.CharField(null=True, blank=True)
+    mobile = models.BooleanField(blank=True, null=True)
+
 class Vacancy(models.Model):
 	name = models.CharField(verbose_name='Название', max_length=300)
 	city = models.ForeignKey(City, on_delete=models.CASCADE, verbose_name="Место работы")
@@ -74,7 +83,7 @@ class Vacancy(models.Model):
 	index = models.ForeignKey(Index, on_delete=models.CASCADE, verbose_name="Индекс")
 	text = tinymce_models.HTMLField()
 	active = models.BooleanField(verbose_name='Активно', default=True)
-	views = models.IntegerField(default=0)
+	views = models.ManyToManyField(View)
 
 	def __str__(self):
 		return f'{self.index} - {self.name} | {self.city}'
