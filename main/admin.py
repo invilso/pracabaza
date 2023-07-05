@@ -4,7 +4,7 @@ from .models import *
 class VacancyAdmin(admin.ModelAdmin):
     list_display = ('index' ,'name', 'get_view_count', 'state', 'city', 'category', 'active')  # Отображаемые поля в главном списке
     exclude = ('views',)  # Исключаем поле views из меню редактирования
-    search_fields = ('title',)  # Поля для поиска
+    search_fields = ('name','id')  # Поля для поиска
     list_filter = ('active', 'city__name', 'state__name')  # Фильтры
     def get_list_display_links(self, request, list_display):
         # Используем поле 'name' для ссылки открытия объекта
