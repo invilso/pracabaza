@@ -2,7 +2,7 @@ from django.contrib import admin
 from .models import *
 # Register your models here.
 class VacancyAdmin(admin.ModelAdmin):
-    list_display = ('index' ,'name', 'get_view_count', 'state', 'city', 'category', 'active')  # Отображаемые поля в главном списке
+    list_display = ('index' ,'name', 'get_view_count', 'state', 'city', 'category', 'active', 'id')  # Отображаемые поля в главном списке
     exclude = ('views',)  # Исключаем поле views из меню редактирования
     search_fields = ('name','id')  # Поля для поиска
     list_filter = ('active', 'city__name', 'state__name')  # Фильтры
