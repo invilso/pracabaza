@@ -1,0 +1,15 @@
+.custom-card-footer {
+    background-color: transparent; /* Убрать цвет фона */
+    border: none; /* Убрать обводку */
+    border-top: none; /* Убрать верхнюю линию */
+    padding: 0; /* Убрать отступы */
+}
+.custom-title-link {
+    color: inherit;
+    text-decoration: none;
+}
+
+.custom-title-link:hover {
+    color: #0a58ca; /* Измененный цвет при наведении */
+    text-decoration: none;
+}

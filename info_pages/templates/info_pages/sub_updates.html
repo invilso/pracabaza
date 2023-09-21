@@ -1,0 +1,11 @@
+<div class='row p-3 mt-2' {% if use_bg %}style='background: #f5f5f5; border-radius: 30px'{% endif %}>
+    <div class='col-11 mx-auto'>
+      <h3><b>Подпишитесь на наши обновления</b></h3>
+      <h5>Узнавайте о свежих вакансиях первыми</h5>
+      {% for network in networks %}
+      <a href="{{ network.link }}" target="_blank" class="btn btn-secondary btn-circle p-2 d-inline-flex" style=' border-radius: 500px'>
+        <i class="fab fa-{{network.name}}" style='font-size: 1.4rem;'></i>
+      </a>            
+      {% endfor %}
+    </div>
+</div> 

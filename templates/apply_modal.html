@@ -1,0 +1,64 @@
+{% load i18n %}
+{% load static %}
+<div class="modal fade" id="{{ apply_modal_id }}" tabindex="-1" role="dialog" aria-labelledby="applymodalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="applymodalLabel">{{ apply_modal_title }}</h5>
+                <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                {% if want_partner %}
+                <span>Если Вы хотите стать нашим партнером-рекрутером и зарабатывать от 500 до 800 злотых за каждого нанятого сотрудника, пожалуйста, заполните форму с контактами, и мы свяжемся с Вами.</span>
+                {% endif %}
+                <form class="p-1" action="{% url 'vacancy:apply' %}" method="post" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    <div class="mb-3">
+                        <input id="token-input" style='display: none;' class="form-control" type="text" name="v_id" value="{% if vacancy %}{{vacancy.id}}{% endif %}">
+                        <input id="partner-want-input" style='display: none;' class="form-control" type="text" name="want_partner" value="{% if want_partner %}1{% endif %}">
+                    </div>
+                    <div class="mb-3">
+                        <label for="name">Имя:</label>
+                        <input class="form-control" type="text" placeholder="Ваше Имя" id='name' name='name'>
+                    </div>
+                    {% if not want_partner %}
+                    <div class="mb-3">
+                        <label for="vacancy">{% if want_partner %}Сообщение{% else %}Желаемая работа{% endif %}:</label>
+                        <input class="form-control" type="text" placeholder="{% if vacancy %}{{vacancy.category.name}}{% else %}{% if want_partner %}Введите ваше сообщение{% else %}Введите название желаемой работы{% endif %}{% endif %}" id='vacancy' name='vacancy'>
+                    </div>
+                    {% endif %}
+                    <div class="mb-3">
+                        <div id="phoneLabel">Телефон:</div>
+                        <input class="form-control phone-number-input w-100" type="text" placeholder="Номер телефона" name='phone' aria-labelledby="phoneLabel">
+                    </div>
+                    {% if want_partner %}
+                    <div class="mb-3">
+                        <label for="vacancy">Ваш запрос:</label>
+                        <textarea class="form-control" type="text" placeholder="Введите ваше сообщение" name='vacancy'>Хочу стать партнером</textarea>
+                    </div>
+                    {% endif %}
+                    <div class="mb-3 form-check">
+                        <input class="form-check-input" type="checkbox" id="check1" name="checkbox">
+                        <label class="form-check-label" style='font-size: 10pt;'>Я даю согласие на обработку моих персональных данных компанией Pracabaza Sp. z.o.o. Предоставление данных является добровольным, но необходимым для обработка запроса и предоставление услуги. Подробная информация об объеме и целях обработки данных нами персональные данные и права субъектов данных можно найти в нашей политике конфиденциальности.</label>
+                    </div>
+                    {% if show_resume_modal %}
+                    <div class="row-upload">
+                        <label>
+                            <img src="{% static 'main/img/upload.png' %}" alt="img">
+                            <input type="file" id="myFile" name="file" style="position: absolute; left: -9999px;">
+                            <span>Прикрепить резюме</span>
+                        </label>
+                    </div>
+                    {% endif %}
+                    <div class="mb-3">
+                        <button id="comment-button" type="submit" class="btn btn-lg btn-secondary">
+                            Оставить заявку
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

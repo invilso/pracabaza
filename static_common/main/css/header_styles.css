@@ -1,0 +1,47 @@
+.header {
+    position: relative;
+    background-color: rgba(0, 0, 0, 0.3); /* Полупрозрачный фон */
+    backdrop-filter: blur(10px); /* Эффект размытия фона */
+    z-index: 1000; /* Переместить вперед для отображения над остальным контентом */
+}
+
+.navbar {
+    padding: 5pt 0;
+}
+.navbar-nav {
+    display: flex;
+    align-items: center;
+}
+.navbar-nav .nav-item {
+    position: relative;
+}
+.navbar-nav li a {
+    position: relative;
+}
+
+.navbar-nav li a::before,
+.navbar-nav li a::after {
+    content: "";
+    position: absolute;
+    bottom: 4px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 0;
+    height: 1.5px;
+    transition: width 0.3s ease-in-out, background-color 0.3s ease-in-out;
+}
+
+.navbar-nav li.selected a::before,
+.navbar-nav li a:hover::before {
+    width: 80%;
+    background-color: white; /* Цвет при выбранном состоянии и наведении */
+}
+
+.navbar-nav li a:hover::after {
+    width: 80%;
+    background-color: blue; /* Цвет при наведении */
+}
+
+.navbar-brand img {
+    height: 35pt; /* Размер вашего SVG-логотипа */
+}

@@ -1,0 +1,45 @@
+.scroll-container {
+    max-height: 150px;
+    overflow-y: auto;
+    border-radius: 10px;
+    background-color: rgba(0, 0, 0, 0.05);
+    padding: 10px;
+    margin-bottom: 10px;
+    
+    /* Стили для кастомного скроллбара */
+    scrollbar-width: thin;
+    scrollbar-color: #888888 #f0f0f0;
+}
+
+.scroll-container::-webkit-scrollbar {
+    padding-right: 10px;
+    width: 6px;
+}
+
+.scroll-container::-webkit-scrollbar-thumb {
+    background-color: #888888;
+    border-radius: 10px;
+}
+
+.scroll-container::-webkit-scrollbar-track {
+    background-color: #f0f0f0;
+}
+
+body {
+    /* Стили для кастомного скроллбара */
+    scrollbar-width: thin;
+    scrollbar-color: #888888 #f0f0f0;
+}
+
+body::-webkit-scrollbar {
+    width: 6px;
+}
+
+body::-webkit-scrollbar-thumb {
+    background-color: #888888;
+    border-radius: 10px;
+}
+
+body::-webkit-scrollbar-track {
+    background-color: #f0f0f0;
+}

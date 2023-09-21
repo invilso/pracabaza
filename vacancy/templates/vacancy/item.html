@@ -1,0 +1,309 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Pracabaza - Вакансии{% endblock title %}
+{% block static %}
+<link rel="stylesheet" href="{% static 'main/css/scroll_styles.css' %}">
+<link rel="stylesheet" href="{% static 'main/css/media_styles.css' %}">
+<link rel="stylesheet" href="{% static 'main/css/custom_styles.css' %}">
+<link rel="stylesheet" href="{% static 'vacancy/css/background_styles.css' %}">
+<style>
+{% comment %} @media (max-width: 767px) {
+  .image-wrapper img {
+    content: url("{% static 'main/img/background_sm.png' %}");
+    width: 100%;
+  }
+} {% endcomment %}
+
+.carousel-control-prev,
+.carousel-control-next {
+  top: 50%; /* Расположить по вертикали на 50% */
+  transform: translateY(-50%); /* Поднять на половину высоты элемента */
+  bottom: auto; /* Убрать нижнее позиционирование */
+}
+
+.carousel-control-prev {
+  left: 0; /* Расположить слева */
+}
+
+.carousel-control-next {
+  right: 0; /* Расположить справа */
+}
+
+.carousel-indicators {
+  bottom: 0; /* Переместить индикаторы на нижний край */
+  margin-bottom: 20px; /* Добавить немного отступа снизу */
+}
+.carousel-inner .carousel-item .embed-responsive {
+  border-radius: 30px; /* Задайте желаемый радиус закругления */
+}
+</style>
+<style>
+  .main-text-header {
+    font-size:50px; 
+    line-height:60px; 
+    color: white
+  }
+  
+  @media (max-width: 767px) {
+    .main-text-header {
+      font-size:40px; 
+      line-height:50px; 
+    }
+  }
+</style>
+<style>
+  .custom-icon {
+    font-size: 1.2rem;
+    line-height: 1;
+    margin-right: 0.1rem;
+  }
+  .custom-text {
+    margin: 0;
+  }
+  .custom-salary {
+    font-size: 1.5rem; /* Увеличение размера шрифта зарплаты */
+  }
+</style>
+<style>
+  .slavestar {
+    opacity: 0;
+    transition: opacity 0.5s ease;
+ }
+ 
+ .slavestar.open {
+    opacity: 1;
+ }
+ .reviewstars {
+    overflow: hidden;
+    transition: max-height 0.3s ease;
+    max-height: 40pt; /* Начальная высота контейнера */
+ }
+ 
+ .reviewstars.open {
+    max-height: 200pt; /* Максимальная высота контейнера при открытии */
+ }
+
+ .reviewstars.open .fa-chevron-down {
+    display: inline-block;
+    transform: rotate(180deg);
+ }
+
+ .masterstar {
+  background: #ebebeb; 
+  border-radius: 5px; 
+  margin-bottom: 10px;
+ }
+ .masterstar:hover {
+  background: #dfdfdf;
+  color: #0a58ca;
+ }
+ .reviewstars.open .masterstar {
+  background: #dfdfdf;
+  color: #0a58ca;
+ }
+</style>
+
+<style>
+.custom-btn-xl {
+  font-size: 1.5rem; /* Размер шрифта */
+  padding: 0.5rem 1rem; /* Внутренние отступы кнопки */
+}
+
+body {
+  overflow-x: hidden;
+}
+</style>
+{% endblock static %}
+
+
+{% block image_wrapper %}
+    <div class="image-wrapper">
+        <img class="img-responsive" src="{{vacancy.card_photo.file.url}}" alt="Фото">
+    </div>
+    <div class='p-md-5 p-sm-2'>
+      <a class="custom-title-link" style='color: white;' href="{% url 'vacancy:list' %}">
+        <i class="fa-solid fa-arrow-left"></i> Вернуться к поиску
+      </a>
+      <h1 class='main-text-header'><strong>{{vacancy.name}}</strong></h1>
+    </div>
+{% endblock image_wrapper %}
+
+{% block content_wrapper %}
+<div class="container-fluid p-1 p-md-0">
+    <div class="row p-4" style='background-color: #ebebeb'>
+      <div class="col-md-6 order-md-1 mt-2">
+        <div class='row flex-column justify-content-end align-items-end '>
+          <div class='col-md-9 col-12 col-sm-10'>
+            <div id="myCarousel" class="carousel carousel-fade">
+                <!-- Индикаторы -->
+                <ol class="carousel-indicators">
+                  {% if vacancy.video %}<li data-bs-target="#myCarousel" data-bs-slide-to="0" class="active"></li>{% endif %}
+                  {% for photo in vacancy.photos.all %}
+                  <li data-bs-target="#myCarousel" {% if not vacancy.video and forloop.counter == 1 %}class="active"{% endif %} data-bs-slide-to="{% if vacancy.video %}{{forloop.counter}}{% else %}{{forloop.counter0}}{% endif %}"></li>
+                  {% endfor %}
+                  <!-- ... -->
+                </ol>
+              
+                <!-- Слайды -->
+                <div class="carousel-inner">
+                  {% if vacancy.video %}
+                  <div class="carousel-item active">
+                    <div class="embed-responsive embed-responsive-16by9">
+                      {% if vacancy.video.file %}
+                      <video class="embed-responsive-item"  controls src="{{vacancy.video.file.url}}" type="video/mp4">
+                        <img src="https://storage.googleapis.com/cms-storage-bucket/a667e994fc2f3e85de36.png" alt="Fast">
+                      </video>
+                      {% else %}
+                      {{vacancy.video.embeded|safe}}
+                      {% endif %}
+                    </div>
+                  </div>
+                  {% endif %}
+                  {% for photo in vacancy.photos.all %}
+                  <div class="carousel-item {% if forloop.counter0 == 0 and not vacancy.video %}active{% endif %}">
+                    <div class="embed-responsive embed-responsive-16by9">
+                      <img class="embed-responsive-item" src="{{photo.file_thumbnail_deck.url}}" alt="Slide">
+                    </div>
+                  </div>
+                  {% endfor %}
+                </div>
+              
+                <!-- Управление -->
+                <a class="carousel-control-prev" href="#myCarousel" role="button" data-bs-slide="prev">
+                  <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                  <span class="visually-hidden">Previous</span>
+                </a>
+                <a class="carousel-control-next" href="#myCarousel" role="button" data-bs-slide="next">
+                  <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                  <span class="visually-hidden">Next</span>
+                </a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6 order-md-2 mt-md-0 mt-2">
+        <div class='row'>
+          <div class='col-md-10'>
+            <h2 class='pt-md-4 pb-2'><strong>{{vacancy.title}}</strong></h2>
+            <div class="container">
+              <div class="row align-items-center mt-1">
+                <div class="col-auto">
+                  <span class="custom-icon mx-1"><i class="far fa-location-dot" style="color: #0a58ca;"></i></span>
+                </div>
+                <div class="col">
+                  <p class="custom-text">{{vacancy.state}}, {{vacancy.city}}</p>
+                </div>
+              </div>
+              <div class="row align-items-center mt-1">
+                <div class="col-auto">
+                  <span class="custom-icon"><i class="far fa-house" style="color: #0a58ca;"></i></span>
+                </div>
+                <div class="col">
+                  <p class="custom-text">{{vacancy.info_label.house}}</p>
+                </div>
+              </div>
+              <div class="row align-items-center mt-1">
+                <div class="col-auto">
+                  <span class="custom-icon"><i class="far fa-briefcase" style="color: #0a58ca;"></i></span>
+                </div>
+                <div class="col">
+                  <p class="custom-text">{{vacancy.info_label.benefits}}</p>
+                </div>
+              </div>
+              <div class="row align-items-center mt-4">
+                <div class="col-auto">
+                  <span class="custom-icon"><i class="far fa-coins" style="color: #0a58ca;"></i></span>
+                </div>
+                <div class="col">
+                  <p class="custom-text custom-salary"><strong style="color: #0a58ca;">{{ vacancy.get_salary_text }}</strong></p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row p-3 mt-2">
+      <div class="col-md-6 order-md-1 mt-2">
+        <div class='row flex-column justify-content-end align-items-end '>
+          <div class='col-md-9 col-12 col-sm-10'>
+            <p>{{vacancy.description|safe}}</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6 order-md-1 mt-2">
+        <div class='row'>
+          <div class='col-md-10'>
+            <div class="mb-2 reviewstars">
+              <div class='mb-1 masterstar p-2' style='position: relative;'>
+                <span style='font-size: 1.2rem; padding-left: 3pt;'><i class="fa-regular fa-coins"></i> <strong>Заработная плата</strong></span>
+                <i class="fa-regular fa-chevron-down fa-chevron-down position-absolute end-0 p-2"></i>
+              </div>
+              <div class='mb-1 mx-3 slavestar' >
+                {% for salary in vacancy.salary_per_hour.all %}
+                <div><i class="fa-solid fa-circle-small" style='font-size: 0.6rem;'></i> {{salary}}</div>
+                {% endfor %}
+              </div>
+            </div>
+            <div class="mb-2 reviewstars">
+              <div class='mb-1 masterstar p-2' style='position: relative;'> 
+                <span style='font-size: 1.2rem; padding-left: 3pt;'><i class="fa-regular fa-clock"></i> <strong>График работы</strong></span>
+                <i class="fa-regular fa-chevron-down fa-chevron-down position-absolute end-0 p-2"></i>
+              </div>
+              <div class='mb-1 mx-3 slavestar'>
+                <span>{{vacancy.work_schedule|safe}}</span>
+              </div>
+            </div>
+            <div class="mb-2 reviewstars">
+              <div class='mb-1 masterstar p-2' style='position: relative;'>
+                <span style='font-size: 1.2rem; padding-left: 3pt;'> <i class="far fa-briefcase"></i> <strong>Обязанности</strong></span>
+                <i class="fa-regular fa-chevron-down position-absolute end-0 p-2"></i> 
+              </div>
+              <div class='mb-1 mx-3 slavestar'>
+                {% for duty in vacancy.work_duties.all %}
+                <div><i class="fa-solid fa-circle-small" style='font-size: 0.7rem;'></i> {{duty}}</div>
+                {% endfor %}
+              </div>
+            </div>
+            <div class="text-center"> <!-- Добавлен контейнер для центрирования -->
+              <button type="button" class="btn btn-primary custom-btn-xl" data-bs-toggle="modal" data-bs-target="#applyVacancyModal">Подать заявку</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+{% include 'apply_modal.html' with show_resume_modal=True apply_modal_title='Откликнуться на вакансию' apply_modal_id='applyVacancyModal' %}
+{% endblock content_wrapper %}
+
+
+{% block scripts %}
+<script>
+$(document).ready(function() {
+  $('.masterstar').click(function() {
+    var reviewStars = $(this).closest('.reviewstars');
+    var slaveStars = $(this).parent().find('.slavestar')
+    if (reviewStars.hasClass('open')) {
+      reviewStars.removeClass('open');
+      slaveStars.each(function() {
+        $(this).removeClass('open');
+     });
+    } else {
+      $('.reviewstars.open').removeClass('open');
+      slaveStars.each(function() {
+        $(this).addClass('open');
+     });
+      reviewStars.addClass('open');
+    }
+  });
+});
+</script>
+<script src="https://cdn.jsdelivr.net/npm/intl-tel-input@18.2.1/build/js/intlTelInput.min.js"></script>
+<script>
+    const input = document.querySelector("#phone");
+    window.intlTelInput(input, {
+        utilsScript: "https://cdn.jsdelivr.net/npm/intl-tel-input@18.2.1/build/js/utils.js",
+        preferredCountries: ['pl', 'uk']
+    });
+</script>
+{% endblock scripts %}

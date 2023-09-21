@@ -1,0 +1,299 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Pracabaza - О нас{% endblock title %}
+{% block static %}
+<link rel="stylesheet" href="{% static 'main/css/scroll_styles.css' %}">
+<link rel="stylesheet" href="{% static 'main/css/media_styles.css' %}">
+<link rel="stylesheet" href="{% static 'main/css/custom_styles.css' %}">
+{% comment %} <link rel="stylesheet" href="{% static 'vacancy/css/background_styles.css' %}"> {% endcomment %}
+<style>
+{% comment %} @media (max-width: 767px) {
+  .image-wrapper img {
+    content: url("{% static 'main/img/background_sm.png' %}");
+    width: 100%;
+  }
+} {% endcomment %}
+
+@media (max-width: 991px) {
+    #phone, #name, #vacancy {
+      width: 300px; /* Или другое значение, если вы хотите изменить ширину на меньших экранах */
+    }
+}
+
+@media (max-width: 767px) {
+  #phone, #name, #vacancy {
+    width: 250px; /* Или другое значение, если вы хотите изменить ширину на меньших экранах */
+  }
+}
+.carousel-control-prev,
+.carousel-control-next {
+  top: 50%; /* Расположить по вертикали на 50% */
+  transform: translateY(-50%); /* Поднять на половину высоты элемента */
+  bottom: auto; /* Убрать нижнее позиционирование */
+}
+
+.carousel-control-prev {
+  left: 0; /* Расположить слева */
+}
+
+.carousel-control-next {
+  right: 0; /* Расположить справа */
+}
+
+.carousel-indicators {
+  bottom: 0; /* Переместить индикаторы на нижний край */
+  margin-bottom: 20px; /* Добавить немного отступа снизу */
+}
+.embed-responsive img {
+  border-radius: 10px; /* Задайте желаемый радиус закругления */
+}
+</style>
+<style>
+  .main-text-header {
+    font-size:50px; 
+    line-height:60px; 
+    color: white
+  }
+  
+  @media (max-width: 767px) {
+    .main-text-header {
+      font-size:40px; 
+      line-height:50px; 
+    }
+  }
+</style>
+<style>
+  .custom-icon {
+    font-size: 1.2rem;
+    line-height: 1;
+    margin-right: 0.1rem;
+  }
+  .custom-text {
+    margin: 0;
+  }
+  .custom-salary {
+    font-size: 1.5rem; /* Увеличение размера шрифта зарплаты */
+  }
+</style>
+<style>
+  .slavestar {
+    opacity: 0;
+    transition: opacity 0.5s ease;
+ }
+ 
+ .slavestar.open {
+    opacity: 1;
+ }
+ .reviewstars {
+    overflow: hidden;
+    transition: max-height 0.3s ease;
+    max-height: 40pt; /* Начальная высота контейнера */
+ }
+ 
+ .reviewstars.open {
+    max-height: 200pt; /* Максимальная высота контейнера при открытии */
+ }
+
+ .reviewstars.open .fa-chevron-down {
+    display: inline-block;
+    transform: rotate(180deg);
+ }
+
+ .masterstar {
+  background: #ebebeb; 
+  border-radius: 5px; 
+  margin-bottom: 10px;
+ }
+ .masterstar:hover {
+  background: #dfdfdf;
+  color: #0a58ca;
+ }
+ .reviewstars.open .masterstar {
+  background: #dfdfdf;
+  color: #0a58ca;
+ }
+</style>
+
+<style>
+.custom-btn-xl {
+  font-size: 1.5rem; /* Размер шрифта */
+  padding: 0.5rem 1rem; /* Внутренние отступы кнопки */
+}
+
+body {
+  overflow-x: hidden;
+}
+
+.header {
+  background-color: rgb(51 51 51)
+}
+.image-crop {
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
+}
+</style>
+
+<style>
+  .btn-facebook {
+    display: inline-block;
+    border-radius: 50%; /* Создаем круглую форму */
+    background-color: gray; /* Цвет фона кнопки */
+    color: white; /* Цвет иконки */
+    padding: 10px; /* Отступы внутри кнопки */
+    font-size: 30px; /* Размер иконки */
+    text-align: center;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+  }
+  
+  .btn-facebook:hover {
+    background-color: #1877f2; /* Изменяем цвет фона при наведении */
+  }
+</style>
+
+<!-- Add the slick-theme.css if you want default styling -->
+<link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
+<!-- Add the slick-theme.css if you want default styling -->
+<link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css"/>
+
+{% endblock static %}
+
+
+{% comment %} {% block image_wrapper %}
+    <div class="image-wrapper">
+        <img class="img-responsive" src="{{vacancy.card_photo.file.url}}" alt="Фото">
+    </div>
+    <div class='p-md-5 p-sm-2'>
+      <a class="custom-title-link" style='color: white;' href="{% url 'vacancy:list' %}">
+        <i class="fa-solid fa-arrow-left"></i> Вернуться к поиску
+      </a>
+      <h1 class='main-text-header'><strong>{{vacancy.name}}</strong></h1>
+    </div>
+{% endblock image_wrapper %} {% endcomment %}
+
+{% block content_wrapper %}
+<div class="container-fluid p-1 px-md-3 pt-2">
+  <div class="row p-1 px-md-5 pt-2" style='background-color: ##f5f5f5'>
+    <div class='row' >
+      <div class='col-9 m-auto'>
+        <div class='row p-3 mt-2' style='background: #f5f5f5; border-radius: 30px'>
+          <div class='col-md-6 col-12 p-3'>
+            <div class="embed-responsive embed-responsive-4by3 p-5">
+              <iframe
+                class="embed-responsive-item image-crop"
+                style="border:0; border-radius: 10px"
+                loading="lazy"
+                allowfullscreen
+                referrerpolicy="no-referrer-when-downgrade"
+                src="{{contact_info.address_url}}">
+              </iframe>
+            </div>
+          </div>
+
+          <div class='col-md-6 col-12'>
+            <h2 style="color: #1e1742;" class='my-2'>
+              <strong>Контакты</strong>
+            </h2>
+            <div>
+              <div class="row align-items-center mt-1">
+                <div class="col-auto mx-0">
+                  <span class="custom-icon mx-1"><i class="far fa-location-dot" style="color: #0a58ca;"></i></span>
+                </div>
+                <div class="col">
+                  <p class="custom-text">{{contact_info.address}}</p>
+                </div>
+              </div>
+              <div class="row align-items-center mt-1">
+                <div class="col-auto mx-0 pr-2">
+                  <span class="custom-icon mx-1"><i class="far fa-phone" style="color: #0a58ca;"></i></span>
+                </div>
+                <div class="col">
+                  {% for phone in contact_info.phones.all %}
+                  <p class="custom-text">{{phone.phone_number}}</p>
+                  {% endfor %}
+                </div>
+              </div>
+              
+              <div class="row mt-md-5 mt-1">
+                {% for social in contact_info.social_networks.all %}
+                <div class="col-md-6 col-12">
+                  
+                  <div class="row align-items-center mt-2">
+                    <div class="col-auto mx-0 pr-2">
+                      <a href="{{ social.link }}" target="_blank" class="btn btn-secondary p-2 px-2 d-inline-flex" style='border-radius: 500px'>
+                        <i class="fab fa-{{social.name}}" style='font-size: 1.7rem;'></i>
+                      </a>
+                    </div>
+                    <div class="col">
+                      <a class="custom-text text-secondary" style='text-decoration: none;' href="{{ social.link }}" target="_blank" ><b>{{social.get_name_display}}</b></a>
+                    </div>
+                  </div>
+                  
+                  
+                </div>
+                {% endfor %}
+              </div>
+              
+            </div>
+          </div>
+        </div>
+
+        {% include 'info_pages/sub_updates.html' with use_bg=True %}       
+
+        {% include 'info_pages/partners.html' with use_bg=False %} 
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock content_wrapper %}
+
+
+{% block scripts %}
+<script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+<script>
+  $('.responsive-slides').slick({
+    dots: true,
+    infinite: false,
+    speed: 300,
+    autoplay: true,
+    slidesToShow: 8,
+    slidesToScroll: 2,
+    responsive: [
+        {
+            breakpoint: 1024,
+            settings: {
+                slidesToShow: 6,
+                slidesToScroll: 6,
+                infinite: true,
+                dots: true
+            }
+        },
+        {
+            breakpoint: 600,
+            settings: {
+                slidesToShow: 4,
+                slidesToScroll: 4
+            }
+        },
+        {
+            breakpoint: 480,
+            settings: {
+                slidesToShow: 2,
+                slidesToScroll: 2
+            }
+        }
+    ]
+});
+$('.variable-width').slick({
+  dots: true,
+  infinite: true,
+  speed: 300,
+  slidesToShow: 1,
+  centerMode: true,
+  variableWidth: true,
+  autoplay: true,
+  autoplaySpeed: 1000,
+});
+</script>
+{% endblock scripts %}
