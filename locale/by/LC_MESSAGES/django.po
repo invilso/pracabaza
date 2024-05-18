@@ -1,0 +1,639 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2024-03-31 19:02+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: arrow_rsc/settings.py:140
+msgid "Russian"
+msgstr ""
+
+#: arrow_rsc/settings.py:141
+msgid "English"
+msgstr ""
+
+#: arrow_rsc/settings.py:142
+msgid "Ukrainian"
+msgstr ""
+
+#: arrow_rsc/settings.py:143
+msgid "Polish"
+msgstr ""
+
+#: arrow_rsc/settings.py:144
+msgid "Azerbaijani"
+msgstr ""
+
+#: info_pages/models.py:15 vacancy/models.py:110
+msgid "Файл"
+msgstr ""
+
+#: info_pages/models.py:34 info_pages/models.py:103 info_pages/models.py:116
+#: vacancy/models.py:124
+msgid "Фотография"
+msgstr ""
+
+#: info_pages/models.py:35 vacancy/models.py:125
+msgid "Фотографии"
+msgstr ""
+
+#: info_pages/models.py:38 info_pages/models.py:45
+msgid "Номер телефона"
+msgstr ""
+
+#: info_pages/models.py:46
+msgid "Номера телефона"
+msgstr ""
+
+#: info_pages/models.py:63
+msgid "URL странички в социальной сети"
+msgstr ""
+
+#: info_pages/models.py:64
+msgid "Название социальной сети"
+msgstr ""
+
+#: info_pages/models.py:70
+msgid "Социальная сеть"
+msgstr ""
+
+#: info_pages/models.py:71 info_pages/models.py:76
+msgid "Социальные сети"
+msgstr ""
+
+#: info_pages/models.py:75
+msgid "Номера телефонов"
+msgstr ""
+
+#: info_pages/models.py:77
+msgid "Запрос для поиска в Google Maps"
+msgstr ""
+
+#: info_pages/models.py:78
+msgid "URL встройки GMaps"
+msgstr ""
+
+#: info_pages/models.py:96 info_pages/models.py:97
+msgid "Контакты (одно поле)"
+msgstr ""
+
+#: info_pages/models.py:101 info_pages/models.py:114
+msgid "Заголовок"
+msgstr ""
+
+#: info_pages/models.py:102 info_pages/models.py:153
+msgid "Текст"
+msgstr ""
+
+#: info_pages/models.py:109 info_pages/models.py:110
+msgid "О нас (одно поле)"
+msgstr ""
+
+#: info_pages/models.py:115 vacancy/models.py:230
+msgid "Описание"
+msgstr ""
+
+#: info_pages/models.py:122
+msgid "Гарантия"
+msgstr ""
+
+#: info_pages/models.py:123 templates/base.html:64
+msgid "Гарантии"
+msgstr ""
+
+#: info_pages/models.py:127
+msgid "URL партнера (если есть)"
+msgstr ""
+
+#: info_pages/models.py:128
+msgid "Название партнера (для удобства)"
+msgstr ""
+
+#: info_pages/models.py:129
+msgid "Логотип"
+msgstr ""
+
+#: info_pages/models.py:135
+msgid "Партнер"
+msgstr ""
+
+#: info_pages/models.py:136
+msgid "Партнеры"
+msgstr ""
+
+#: info_pages/models.py:139
+msgid "ФИО"
+msgstr ""
+
+#: info_pages/models.py:140
+msgid "Должность"
+msgstr ""
+
+#: info_pages/models.py:141
+msgid "Фотограция"
+msgstr ""
+
+#: info_pages/models.py:147
+msgid "Участник команды"
+msgstr ""
+
+#: info_pages/models.py:148
+msgid "Участники команды"
+msgstr ""
+
+#: info_pages/models.py:152
+msgid "Назание документа"
+msgstr ""
+
+#: info_pages/models.py:159
+msgid "Юридический документ"
+msgstr ""
+
+#: info_pages/models.py:160
+msgid "Юридические документы"
+msgstr ""
+
+#: info_pages/templates/info_pages/about_us.html:4
+#: info_pages/templates/info_pages/contacts.html:4
+#: info_pages/templates/info_pages/waranties.html:4
+msgid "Pracabaza - О нас"
+msgstr ""
+
+#: info_pages/templates/info_pages/about_us.html:201
+msgid "Наша команда"
+msgstr ""
+
+#: info_pages/templates/info_pages/contacts.html:180 templates/base.html:66
+msgid "Контакты"
+msgstr ""
+
+#: info_pages/templates/info_pages/partners.html:4
+msgid "Наши партнеры"
+msgstr ""
+
+#: info_pages/templates/info_pages/sub_updates.html:4
+msgid "Подпишитесь на наши обновления"
+msgstr ""
+
+#: info_pages/templates/info_pages/sub_updates.html:5
+msgid "Узнавайте о свежих вакансиях первыми"
+msgstr ""
+
+#: info_pages/templates/info_pages/waranties.html:159
+msgid "Наши гарантии"
+msgstr ""
+
+#: templates/apply_modal.html:14
+msgid ""
+"Если Вы хотите стать нашим партнером-рекрутером и зарабатывать от 500 до 800 "
+"злотых за каждого нанятого сотрудника, пожалуйста, заполните форму с "
+"контактами, и мы свяжемся с Вами."
+msgstr ""
+
+#: templates/apply_modal.html:23
+msgid "Имя:"
+msgstr ""
+
+#: templates/apply_modal.html:24 vacancy/templates/vacancy/list.html:82
+msgid "Ваше Имя"
+msgstr ""
+
+#: templates/apply_modal.html:28
+msgid "Сообщение"
+msgstr ""
+
+#: templates/apply_modal.html:28
+msgid "Желаемая работа"
+msgstr ""
+
+#: templates/apply_modal.html:29 templates/apply_modal.html:39
+msgid "Введите ваше сообщение"
+msgstr ""
+
+#: templates/apply_modal.html:29
+msgid "Введите название желаемой работы"
+msgstr ""
+
+#: templates/apply_modal.html:33
+msgid "Телефон:"
+msgstr ""
+
+#: templates/apply_modal.html:38
+msgid "Ваш запрос:"
+msgstr ""
+
+#: templates/apply_modal.html:39
+msgid "Хочу стать партнером"
+msgstr ""
+
+#: templates/apply_modal.html:44 vacancy/templates/vacancy/list.html:88
+msgid ""
+"Я даю согласие на обработку моих персональных данных компанией Arrow-rsc Sp. "
+"z.o.o. Предоставление данных является добровольным, но необходимым для "
+"обработка запроса и предоставление услуги. Подробная информация об объеме и "
+"целях обработки данных нами персональные данные и права субъектов данных "
+"можно найти в нашей политике конфиденциальности."
+msgstr ""
+
+#: templates/apply_modal.html:51
+msgid "Прикрепить резюме"
+msgstr ""
+
+#: templates/apply_modal.html:57 vacancy/templates/vacancy/list.html:92
+msgid "Оставить заявку"
+msgstr ""
+
+#: templates/base.html:8 vacancy/templates/vacancy/item.html:4
+#: vacancy/templates/vacancy/list.html:3
+msgid "Pracabaza - Вакансии"
+msgstr ""
+
+#: templates/base.html:63 vacancy/models.py:303
+msgid "Вакансии"
+msgstr ""
+
+#: templates/base.html:65 templates/footer.html:7
+msgid "О нас"
+msgstr ""
+
+#: templates/base.html:68 templates/base.html:75
+msgid "Связаться"
+msgstr ""
+
+#: templates/base.html:71 templates/base.html:76
+msgid "Стать партнером"
+msgstr ""
+
+#: templates/base.html:91
+msgid "Заявка на обратную связь"
+msgstr ""
+
+#: templates/base.html:93
+msgid "Заявка на становление партнером"
+msgstr ""
+
+#: templates/base.html:158
+msgid "Пожалуйста, введите ваше имя."
+msgstr ""
+
+#: templates/base.html:161
+msgid "Пожалуйста, введите ваш номер телефона."
+msgstr ""
+
+#: templates/base.html:164
+msgid "Пожалуйста, отметьте галочку о согласии на обработку данных."
+msgstr ""
+
+#: templates/base.html:168
+msgid "Пожалуйста, введите номер телефона в верном формате и выберите страну."
+msgstr ""
+
+#: templates/footer.html:6
+msgid "Другие сервисы"
+msgstr ""
+
+#: templates/footer.html:10
+msgid "Ресурсы"
+msgstr ""
+
+#: templates/footer.html:17
+msgid "Мы в соц. сетях"
+msgstr ""
+
+#: vacancy/admin.py:72
+msgid "Основная информация"
+msgstr ""
+
+#: vacancy/admin.py:75
+msgid "Медиа"
+msgstr ""
+
+#: vacancy/admin.py:78
+msgid "Описание и оплата"
+msgstr ""
+
+#: vacancy/admin.py:81
+msgid "Детали и расписание"
+msgstr ""
+
+#: vacancy/admin.py:84
+msgid "Просмотры и метаданные"
+msgstr ""
+
+#: vacancy/models.py:45 vacancy/models.py:88
+msgid "Название"
+msgstr ""
+
+#: vacancy/models.py:52 vacancy/models.py:209
+msgid "Регион"
+msgstr ""
+
+#: vacancy/models.py:53
+msgid "Регионы"
+msgstr ""
+
+#: vacancy/models.py:56
+msgid "Название города"
+msgstr ""
+
+#: vacancy/models.py:63
+msgid "Город"
+msgstr ""
+
+#: vacancy/models.py:64
+msgid "Города"
+msgstr ""
+
+#: vacancy/models.py:67 vacancy/models.py:73 vacancy/models.py:74
+#: vacancy/models.py:227
+msgid "Пол"
+msgstr ""
+
+#: vacancy/models.py:77
+msgid "Жилье"
+msgstr ""
+
+#: vacancy/models.py:78
+msgid "Выгоды"
+msgstr ""
+
+#: vacancy/models.py:84
+msgid "Описание Стандарт"
+msgstr ""
+
+#: vacancy/models.py:85
+msgid "Описания Стандарт"
+msgstr ""
+
+#: vacancy/models.py:95 vacancy/models.py:228
+msgid "Категория"
+msgstr ""
+
+#: vacancy/models.py:96
+msgid "Категории"
+msgstr ""
+
+#: vacancy/models.py:99 vacancy/models.py:105
+msgid "Индекс"
+msgstr ""
+
+#: vacancy/models.py:106
+msgid "Индексы"
+msgstr ""
+
+#: vacancy/models.py:128
+msgid "Файл (Если нет ссылки на YT)"
+msgstr ""
+
+#: vacancy/models.py:129
+msgid "Ссылка на YouTube (если есть)"
+msgstr ""
+
+#: vacancy/models.py:130
+msgid "Встройка в YouTube (не изменять)"
+msgstr ""
+
+#: vacancy/models.py:141
+msgid "Видеозапись"
+msgstr ""
+
+#: vacancy/models.py:142
+msgid "Видеозаписи"
+msgstr ""
+
+#: vacancy/models.py:145
+msgid "Описание обязанности"
+msgstr ""
+
+#: vacancy/models.py:151
+msgid "Обязанность по работе"
+msgstr ""
+
+#: vacancy/models.py:152 vacancy/models.py:222
+msgid "Обязанности по работе"
+msgstr ""
+
+#: vacancy/models.py:155
+msgid "Описание требования"
+msgstr ""
+
+#: vacancy/models.py:161
+msgid "Требование к кандидату"
+msgstr ""
+
+#: vacancy/models.py:162
+msgid "Требования к кандидатам"
+msgstr ""
+
+#: vacancy/models.py:167
+msgid "Сумма"
+msgstr ""
+
+#: vacancy/models.py:168
+msgid "Валюта"
+msgstr ""
+
+#: vacancy/models.py:181
+msgid "Тип оплаты (для студентов, ночные, испытательный и тд.)"
+msgstr ""
+
+#: vacancy/models.py:182
+msgid "Почасовая ставка"
+msgstr ""
+
+#: vacancy/models.py:193
+msgid "Вариант почасовой оплаты"
+msgstr ""
+
+#: vacancy/models.py:194 vacancy/models.py:214
+msgid "Варианты почасовой оплаты"
+msgstr ""
+
+#: vacancy/models.py:206
+msgid "Название вакансии"
+msgstr ""
+
+#: vacancy/models.py:207
+msgid "Заголовок вакансии"
+msgstr ""
+
+#: vacancy/models.py:208
+msgid "Место работы"
+msgstr ""
+
+#: vacancy/models.py:210
+msgid "Картинка карточки вакансии и обложки"
+msgstr ""
+
+#: vacancy/models.py:211
+msgid "Фотографии вакансии"
+msgstr ""
+
+#: vacancy/models.py:212
+msgid "Видеозапись вакансии"
+msgstr ""
+
+#: vacancy/models.py:213
+msgid "Описание стандарт"
+msgstr ""
+
+#: vacancy/models.py:215
+msgid "Ставка месячная минимум"
+msgstr ""
+
+#: vacancy/models.py:216
+msgid "Ставка месячная максимум"
+msgstr ""
+
+#: vacancy/models.py:217
+msgid "Ставка месячная фиксированая (если нет минимума или максимума)"
+msgstr ""
+
+#: vacancy/models.py:218
+msgid "Ставка почасовая (если нет месячной)"
+msgstr ""
+
+#: vacancy/models.py:219
+msgid "Валюта по умолчанию"
+msgstr ""
+
+#: vacancy/models.py:220
+msgid "Показывать все валюты в вакансии"
+msgstr ""
+
+#: vacancy/models.py:221
+msgid "Зарплата netto?"
+msgstr ""
+
+#: vacancy/models.py:223
+msgid "Требования к кандидату"
+msgstr ""
+
+#: vacancy/models.py:224 vacancy/templates/vacancy/item.html:264
+msgid "График работы"
+msgstr ""
+
+#: vacancy/models.py:225
+msgid "Дата создания"
+msgstr ""
+
+#: vacancy/models.py:226
+msgid "Дата изменения"
+msgstr ""
+
+#: vacancy/models.py:229
+msgid "Индекс (служебное)"
+msgstr ""
+
+#: vacancy/models.py:231
+msgid "Активно"
+msgstr ""
+
+#: vacancy/models.py:232 vacancy/templates/vacancy/list.html:170
+msgid "Не актуально"
+msgstr ""
+
+#: vacancy/models.py:298
+msgid "Встройка в YouTube"
+msgstr ""
+
+#: vacancy/models.py:302
+msgid "Вакансия"
+msgstr ""
+
+#: vacancy/templates/vacancy/item.html:127
+msgid "Вернуться к поиску"
+msgstr ""
+
+#: vacancy/templates/vacancy/item.html:176
+msgid "Previous"
+msgstr ""
+
+#: vacancy/templates/vacancy/item.html:180
+msgid "Next"
+msgstr ""
+
+#: vacancy/templates/vacancy/item.html:251
+msgid "Заработная плата"
+msgstr ""
+
+#: vacancy/templates/vacancy/item.html:273
+msgid "Обязанности"
+msgstr ""
+
+#: vacancy/templates/vacancy/item.html:284
+msgid "Требования"
+msgstr ""
+
+#: vacancy/templates/vacancy/item.html:294
+msgid "Подать заявку"
+msgstr ""
+
+#: vacancy/templates/vacancy/item.html:301
+msgid "Откликнуться на вакансию"
+msgstr ""
+
+#: vacancy/templates/vacancy/list.html:74
+msgid "Работа в Польше"
+msgstr ""
+
+#: vacancy/templates/vacancy/list.html:78
+msgid "Не нашли подходящую вакансию?"
+msgstr ""
+
+#: vacancy/templates/vacancy/list.html:79
+msgid "Оставьте ваши контакты – мы подберем для вас идеальную работу."
+msgstr ""
+
+#: vacancy/templates/vacancy/list.html:111
+msgid "Фильтр"
+msgstr ""
+
+#: vacancy/templates/vacancy/list.html:115
+msgid "Регион:"
+msgstr ""
+
+#: vacancy/templates/vacancy/list.html:125
+msgid "Пол:"
+msgstr ""
+
+#: vacancy/templates/vacancy/list.html:134
+msgid "Актуальность:"
+msgstr ""
+
+#: vacancy/templates/vacancy/list.html:138
+msgid "Актуально"
+msgstr ""
+
+#: vacancy/templates/vacancy/list.html:142
+msgid "Все"
+msgstr ""
+
+#: vacancy/templates/vacancy/list.html:147
+msgid "Подтвердить"
+msgstr ""
+
+#: vacancy/templates/vacancy/list.html:150
+msgid "Очистить"
+msgstr ""
+
+#: vacancy/templates/vacancy/list.html:159
+msgid "Результаты поиска"
+msgstr ""
+
+#: vacancy/templates/vacancy/list.html:179
+msgid "Подробнее"
+msgstr ""

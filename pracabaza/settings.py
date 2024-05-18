@@ -31,7 +31,7 @@ if os.getenv('DEBUG') == 'True':
 else:
     DEBUG = False
 
-ALLOWED_HOSTS = ['10.1.173.3', '127.0.0.1', 'pracabaza.pl', 'api.vk-proxy.invilso.pp.ua']
+ALLOWED_HOSTS = ['10.1.173.3', '127.0.0.1', 'pracabaza.pl']
 CSRF_TRUSTED_ORIGINS = [
     'http://invilso.pp.ua',
     'http://*.127.0.0.1',
@@ -47,6 +47,7 @@ CSRF_TRUSTED_ORIGINS = [
 # Application definition
 
 INSTALLED_APPS = [
+    'modeltranslation',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -69,6 +70,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'django.middleware.locale.LocaleMiddleware',
 ]
 
 ROOT_URLCONF = 'pracabaza.urls'
@@ -131,13 +133,24 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/4.2/topics/i18n/
 
-LANGUAGE_CODE = 'ru'
-
-TIME_ZONE = 'UTC'
-
+LANGUAGE_CODE = 'ru-ru'
 USE_I18N = True
+USE_L10N = True
 
+gettext = lambda s: s
+LANGUAGES = (
+	('ru', gettext('Russian')),
+    ('en', gettext('English')),
+    ('uk', gettext('Ukrainian')),
+    ('pl', gettext('Polish')),
+    ('az', gettext('Azerbaijani')),
+)
+MODELTRANSLATION_DEFAULT_LANGUAGE = 'ru'
+MODELTRANSLATION_AUTO_POPULATE = True
+# Timezone
+TIME_ZONE = 'UTC'
 USE_TZ = True
+LOCALE_PATHS = (os.path.join(BASE_DIR, 'locale/'), )
 
 
 # Static files (CSS, JavaScript, Images)

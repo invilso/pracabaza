@@ -1,6 +1,7 @@
 {% extends 'base.html' %}
 {% load static %}
-{% block title %}Pracabaza - Вакансии{% endblock title %}
+{% load i18n %}
+{% block title %}{% translate "Pracabaza - Вакансии" %}{% endblock title %}
 {% block static %}
 <link rel="stylesheet" href="{% static 'main/css/styles.css' %}">
 <link rel="stylesheet" href="{% static 'main/css/scroll_styles.css' %}">
@@ -71,25 +72,25 @@
             <div class="col mx-auto">
             </div>
             <div class="col-md-7">
-                <h1 class="text-white main-text-header p-2 text-end"><strong>Работа в Польше</strong></h1>
+                <h1 class="text-white main-text-header p-2 text-end"><strong>{% translate "Работа в Польше"%}</strong></h1>
                 <div class="mt-md-5 pt-md-5">
                     <div class="card mt-5">
                         <div class="card-body">
-                            <h4 style='font-size: 1.5rem;'><strong>Не нашли подходящую вакансию?</strong></h4> 
-                            <h5 style='font-size: 1.1rem;'>Оставьте ваши контакты – мы подберем для вас идеальную работу.</h5>
+                            <h4 style='font-size: 1.5rem;'><strong>{% translate "Не нашли подходящую вакансию?"%}</strong></h4> 
+                            <h5 style='font-size: 1.1rem;'>{% translate "Оставьте ваши контакты – мы подберем для вас идеальную работу."%}</h5>
                             <form class="p-1" action="{% url 'vacancy:apply' %}" method="post" enctype="multipart/form-data">
                                 {% csrf_token %}
-                                <input class="form-control phone-input my-2 form-sizes-media" type="text" placeholder="Ваше Имя" aria-label="default input example" id='name', name="name">
-                                <input class="form-control phone-number-input form-sizes-media" type="text" placeholder="Номер телефона" aria-label="default input example" id='phone', name="phone">
+                                <input class="form-control phone-input my-2 form-sizes-media" type="text" placeholder="{% translate 'Ваше Имя'%}" aria-label="default input example" id='name', name="name">
+                                <input class="form-control phone-number-input form-sizes-media" type="text" aria-label="default input example" id='phone', name="phone">
                                 <div class="row">
                                     <div class='col-md-8 col-sm-12'>
                                         <div class="form-check mt-2">
                                             <input class="form-check-input" type="checkbox" id="check1" name="location" value="something1">
-                                            <label class="form-check-label" style='font-size: 0.5rem;'>Я даю согласие на обработку моих персональных данных компанией Pracabaza Sp. z.o.o. Предоставление данных является добровольным, но необходимым для обработка запроса и предоставление услуги. Подробная информация об объеме и целях обработки данных нами персональные данные и права субъектов данных можно найти в нашей политике конфиденциальности.</label>
+                                            <label class="form-check-label" style='font-size: 0.5rem;'>{% translate "Я даю согласие на обработку моих персональных данных компанией Arrow-rsc Sp. z.o.o. Предоставление данных является добровольным, но необходимым для обработка запроса и предоставление услуги. Подробная информация об объеме и целях обработки данных нами персональные данные и права субъектов данных можно найти в нашей политике конфиденциальности."%}</label>
                                         </div>
                                     </div>
                                     <div class='col-md-4 col-sm-12 mt-sm-3'>
-                                        <button type="submit" class="btn-lg btn-secondary w-100"><strong>Оставить заявку</strong></button>
+                                        <button type="submit" class="btn-lg btn-secondary w-100"><strong>{% translate "Оставить заявку"%}</strong></button>
                                     </div>
                                 </div>
                             </form>
@@ -108,19 +109,11 @@
             <div class="card">
                 <div class="card-body">
                     <h5 class="card-title">
-                        <a href="#" class="custom-title-link"><i class="fa-regular fa-filters" style="color: #0a58ca;"></i> Фильтр</a>
+                        <a href="#" class="custom-title-link"><i class="fa-regular fa-filters" style="color: #0a58ca;"></i> {% translate "Фильтр"%}</a>
                     </h5>
                     <form method='get' action="{% url 'vacancy:list' %}#search_results_link" id="filterForm">
-                        {% comment %} <label for="profession"> <i class="fa-regular fa-user-helmet-safety" style="color: #0a58ca;"></i> <strong>Специальность:</strong></label>
-                        <div class="scroll-container" id="profession">
-                            {% for category in categories %}
-                            <div class="form-check">
-                                <input class="form-check-input" type="checkbox" id="check{{category.id}}prof" name="profession" value="{{category.id}}" {% if category.id in selected_categories %}checked{% endif %}>
-                                <label class="form-check-label">{{category.name}}</label>
-                            </div>
-                            {% endfor %}
-                        </div> {% endcomment %}
-                        <label for="location"> <i class="fa-regular fa-location-dot " style="color: #0a58ca;"></i> <strong>Регион:</strong></label>
+                        
+                        <label for="location"> <i class="fa-regular fa-location-dot " style="color: #0a58ca;"></i> <strong>{% translate "Регион:"%}</strong></label>
                         <div class="scroll-container" id="location">
                             {% for state in states %}
                             <div class="form-check">
@@ -130,7 +123,7 @@
                             {% endfor %}
                         </div>
                         
-                        <label for="sex"><i class="fa-regular fa-user-group" style="color: #0a58ca;"></i> <strong>Пол:</strong></label>
+                        <label for="sex"><i class="fa-regular fa-user-group" style="color: #0a58ca;"></i> <strong>{% translate "Пол:"%}</strong></label>
                         <div class="scroll-container" id="sex">
                             {% for sex in sexes %}
                             <div class="form-check">
@@ -139,12 +132,34 @@
                             </div>
                             {% endfor %}
                         </div>
+                        <label for="irrelevant"> <i class="far fa-calendar" style="color: #0a58ca;"></i> <strong>{% translate "Актуальность:"%}</strong></label>
+                        <div class="scroll-container" id="irrelevant">
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" id="check1irrelevant" name="irrelevant" value="1" {% if 1 in selected_irrelevants %}checked{% endif %}>
+                                <label class="form-check-label">{% translate "Актуально"%}</label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" id="check2irrelevant" name="irrelevant" value="2" {% if 2 in selected_irrelevants %}checked{% endif %}{% if selected_irrelevants|length < 1 %}checked{% endif %}>
+                                <label class="form-check-label">{% translate "Все"%}</label>
+                            </div>
+                        </div>
+                        <label for="with_experience"><i class="far fa-helmet-safety" style="color: #0a58ca;"></i> <strong>{% translate "Опыт работы:"%}</strong></label>
+                        <div class="scroll-container" id="with_experience">
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" id="check1with_experience" name="with_experience" value="1" {% if 1 in selected_with_experience %}checked{% endif %}>
+                                <label class="form-check-label">{% translate "C опытом работы"%}</label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" id="check2with_experience" name="with_experience" value="2" {% if 2 in selected_with_experience %}checked{% endif %}{% if selected_with_experience|length < 1 %}checked{% endif %}>
+                                <label class="form-check-label">{% translate "Без опыта работы"%}</label>
+                            </div>
+                        </div>
                         <div class="row">
                             <div class='col-md-6 col-sm-12 mt-2'>
-                                <button type="submit" class="btn btn-primary w-100">Подтвердить</button>
+                                <button type="submit" class="btn btn-primary w-100">{% translate "Подтвердить"%}</button>
                             </div>
                             <div class='col-md-6 col-sm-12 mt-2'>
-                                <button type="submit" class="btn btn-outline-secondary w-100" id="clearButton" name='clear' value='1'>Очистить</button>
+                                <button type="submit" class="btn btn-outline-secondary w-100" id="clearButton" name='clear' value='1'>{% translate "Очистить"%}</button>
                             </div>
                         </div>
                     </form>
@@ -153,24 +168,27 @@
         </div>
         <div class="col-md-9 order-md-2 mt-2">
             <div class='container'>
-                <h4 id='search_results_link' >Результаты поиска</h4>
+                <h4 id='search_results_link' >{% translate "Результаты поиска"%}</h4>
                 <div class="card-group">
                     <div class="row w-100">
                       {% for vacancy in vacancies %}
                       <div class="col-md-5 col-12 col-sm-8 col-lg-4 mt-2">
-                        <div class="card h-100">
+                        <div class="card h-100" style="opacity: {% if vacancy.irrelevant %}0.7{% else %}1.0{% endif %};">
                             <img src="{{vacancy.card_photo.file_thumbnail_list.url}}" class="card-img-top" alt="...">
                             <div class="card-body d-flex flex-column">
                                 <h5 class="card-title">
-                                    <a href="{% url 'vacancy:item' pk=vacancy.pk %}" class="custom-title-link">{{vacancy.name}}</a>
-                                </h5>
+                                    <a href="{% url 'vacancy:item' pk=vacancy.pk %}" class="custom-title-link">{{ vacancy.name }}</a>
+                                    {% if vacancy.irrelevant %}
+                                        <span class="float-end" style='color: red;'>{% translate "Не актуально"%}</span>
+                                    {% endif %}
+                                </h5>                                
                                 <div class="d-flex flex-column justify-content-between flex-grow-1">
                                     <div>
                                         <div class="card-text"><i class="bi bi-geo-alt custom-salary"></i> {{vacancy.state}}, {{vacancy.city}}</div>
                                     </div>
                                     <div class="custom-card-footer mt-4 d-flex flex-column flex-md-row justify-content-md-between align-items-md-center">
-                                        <div class="custom-salary"><i class="bi bi-cash-coin"></i> {{ vacancy.get_salary_text_list }}</div>
-                                        <a href="{% url 'vacancy:item' pk=vacancy.pk %}" class="btn btn-outline-dark mt-2">Подробнее</a>
+                                        <div class="custom-salary"><i class="bi bi-cash-coin"></i> {{ vacancy.get_salary_text_for_vacancy_list }}</div>
+                                        <a href="{% url 'vacancy:item' pk=vacancy.pk %}" class="btn btn-outline-dark mt-2">{% translate "Подробнее"%}</a>
                                     </div>
                                 </div>
                             </div>  
@@ -191,7 +209,6 @@
         '{% static "main/img/list/3.jpg" %}',
     ];
 
-    // Функция для перемешивания массива в случайном порядке
     function shuffleArray(array) {
         for (let i = array.length - 1; i > 0; i--) {
             const j = Math.floor(Math.random() * (i + 1));
@@ -214,21 +231,8 @@
         currentIndex++;
     }
 
-    // Вызываем функцию для изменения изображения каждые 5 секунд
     setInterval(changeImage, 5000);
 
-    // Инициализация изображения при загрузке страницы
     changeImage();
 </script>
-
-{% comment %} <script>
-    // Обработчик для кнопки "Очистить"
-    document.getElementById("clearButton").addEventListener("click", function() {
-        // Сбросить все значения полей формы
-        document.getElementById("filterForm").reset();
-
-        // Перенаправить на начальный URL без хэша
-        window.location.href = "{% url 'vacancy:list' %}";
-    });
-</script> {% endcomment %}
 {% endblock scripts %}

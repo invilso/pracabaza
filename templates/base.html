@@ -5,8 +5,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>{% block title %}Pracabaza - Вакансии{% endblock title %}</title>
-  <link rel="icon" type="image/x-icon" href="{% static 'main/img/favicon.png' %}">
+  <title>{% block title %}{% translate "Pracabaza- Вакансии"%}{% endblock title %}</title>
+  <link rel="icon" type="image/x-icon" href="{% static 'main/img/favicon.jpg' %}">
   <!-- Последняя скомпилированная и минимизированная версия CSS -->
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -41,21 +41,34 @@
                 </button>
                 <div class="collapse navbar-collapse" id="navbarNav">
                     <ul class="navbar-nav ml-auto">
-                        <li class="nav-item {% if selected_nav_name == 'vacancies' %}selected{% endif %}"><a class="nav-link text-white" href="{% url 'vacancy:list' %}">Вакансии</a></li>
-                        <li class="nav-item {% if selected_nav_name == 'guaranties' %}selected{% endif %}"><a class="nav-link text-light" href="{% url 'info:waranty' %}">Гарантии</a></li>
-                        <li class="nav-item {% if selected_nav_name == 'a_us' %}selected{% endif %}"><a class="nav-link text-light" href="{% url 'info:about_us' %}">О нас</a></li>
-                        <li class="nav-item {% if selected_nav_name == 'contats' %}selected{% endif %}"><a class="nav-link text-light" href="{% url 'info:contacts' %}">Контакты</a></li>
+                        <li class="nav-item {% if selected_nav_name == 'vacancies' %}selected{% endif %}"><a class="nav-link text-white" href="{% url 'vacancy:list' %}">{% translate "Вакансии"%}</a></li>
+                        <li class="nav-item {% if selected_nav_name == 'guaranties' %}selected{% endif %}"><a class="nav-link text-light" href="{% url 'info:waranty' %}">{% translate "Гарантии"%}</a></li>
+                        <li class="nav-item {% if selected_nav_name == 'a_us' %}selected{% endif %}"><a class="nav-link text-light" href="{% url 'info:about_us' %}">{% translate "О нас"%}</a></li>
+                        <li class="nav-item {% if selected_nav_name == 'contats' %}selected{% endif %}"><a class="nav-link text-light" href="{% url 'info:contacts' %}">{% translate "Контакты"%}</a></li>
                         <li class="nav-item d-block d-lg-none">
-                            <button class="btn btn-primary btn-block mt-3" data-bs-toggle="modal" data-bs-target="#applyModal">Связаться</button>
+                            <button class="btn btn-primary btn-block mt-3" data-bs-toggle="modal" data-bs-target="#applyModal">{% translate "Связаться"%}</button>
                         </li>
                         <li class="nav-item d-block d-lg-none">
-                            <button class="btn btn-secondary btn-block mt-3" data-bs-toggle="modal" data-bs-target="#applyPartnerModal">Стать партнером</button>
+                            <button class="btn btn-secondary btn-block mt-3" data-bs-toggle="modal" data-bs-target="#applyPartnerModal">{% translate "Стать партнером"%}</button>
+                        </li>
+                        <li class="nav-item d-block d-lg-none">
+                            <button type="button" class="btn btn-primary btn-block mt-3" data-toggle="modal" data-target="#languageModal">
+                                {% get_current_language as LANGUAGE_CODE %}
+                                <i class="fas fa-globe"></i> {{ LANGUAGE_CODE|upper }}
+                            </button>
+                            
                         </li>
                     </ul>
                     <div class="ml-lg-3 d-none d-lg-block">
-                        <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#applyModal">Связаться</button>
-                        <button class="btn btn-secondary ml-2" data-bs-toggle="modal" data-bs-target="#applyPartnerModal">Стать партнером</button>
+                        <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#applyModal">{% translate "Связаться"%}</button>
+                        <button class="btn btn-secondary ml-2" data-bs-toggle="modal" data-bs-target="#applyPartnerModal">{% translate "Стать партнером"%}</button>
+                        <button type="button" class="btn btn-primary ml-2" data-toggle="modal" data-target="#languageModal">
+                            {% get_current_language as LANGUAGE_CODE %}
+                            <i class="fas fa-globe"></i> {{ LANGUAGE_CODE|upper }}
+                        </button>
+                        
                     </div>
+                    
                 </div>
             </nav>
         </div>
@@ -63,22 +76,19 @@
     {% endblock header %}
     {% block image_wrapper %}
     {% endblock image_wrapper %}
-
+    {% include 'language_modal.html' %}
     
     <div class="content-wrapper my-auto" style='width:100%'>
         {% block content_wrapper %}
         {% endblock content_wrapper %}
         {% block apply_modal_block %}
-        {% include 'apply_modal.html' with show_resume_modal=True apply_modal_title='Заявка на обратную связь' apply_modal_id='applyModal'%}
-        {% include 'apply_modal.html' with show_resume_modal=False apply_modal_title='Заявка на становление партнером' apply_modal_id='applyPartnerModal' want_partner=True%}
+        {% trans "Заявка на обратную связь" as apply_modal_title %}
+        {% include 'apply_modal.html' with show_resume_modal=True apply_modal_title=apply_modal_title apply_modal_id='applyModal'%}
+        {% trans "Заявка на становление партнером" as apply_modal_title %}
+        {% include 'apply_modal.html' with show_resume_modal=False apply_modal_title=apply_modal_title apply_modal_id='applyPartnerModal' want_partner=True%}
         {% endblock apply_modal_block %}
         {% include 'footer.html' %}
     </div>
-  
-    
-  <!-- Последняя скомпилированная и минимизированная версия JavaScript -->
-  <!-- Подключите этот скрипт перед закрывающим тегом body -->
-  <!-- Этот скрипт нужен для работы некоторых компонентов bootstrap5, таких как выпадающие меню, модальные окна и т.д. -->
   
     <script>
         const regularIcons = document.querySelectorAll(".fa-regular");
@@ -88,7 +98,7 @@
                 icon.classList.add("fa-bounce");
                 setTimeout(() => {
                     icon.classList.remove("fa-bounce");
-                }, 1000); // Удалить класс через 1 секунду
+                }, 1000);
             });
         });
         let prevScrollPos = window.pageYOffset;
@@ -100,21 +110,34 @@
             if (prevScrollPos > currentScrollPos) {
                 header.style.top = '0';
             } else {
-                header.style.top = '-100px'; // Измените это значение на высоту вашего header
+                header.style.top = '-100px';
             }
             
             prevScrollPos = currentScrollPos;
         });
     </script>    
-    
-    <script src="https://cdn.jsdelivr.net/npm/intl-tel-input@18.2.1/build/js/intlTelInput.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <!-- Подключение Popper.js -->
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
+    <!-- Подключение Bootstrap JavaScript -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/18.2.1/js/intlTelInput.min.js"></script>
     <script>
-        const phoneNumberInputs = document.querySelectorAll(".phone-number-input");
+        const phoneNumberInputs = document.querySelectorAll("input[name='phone']");
         
         phoneNumberInputs.forEach(input => {
-            window.intlTelInput(input, {
-                utilsScript: "https://cdn.jsdelivr.net/npm/intl-tel-input@18.2.1/build/js/utils.js",
-                preferredCountries: ['pl', 'ua']
+            const iti = window.intlTelInput(input, {
+                utilsScript: "https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/18.2.1/js/utils.min.js",
+                preferredCountries: ['pl', 'ua'],
+            });
+            input.addEventListener("input", function() {
+                const phoneNumber = input.value;
+                const isValid = iti.isValidNumber();
+                
+                if (isValid) {
+                    iti.setNumber(phoneNumber);
+                }
             });
         });
     </script>
@@ -128,21 +151,30 @@
                     const nameInput = form.querySelector("#name");
                     const phoneInput = form.querySelector("input[name='phone']");
                     const checkbox = form.querySelector("#check1");
-        
+                    const iti = window.intlTelInputGlobals.getInstance(phoneInput);
+                    const phoneNumber = iti.getNumber();
                     if (!nameInput.value.trim()) {
-                        alert("Пожалуйста, введите ваше имя.");
+                        alert(`{% translate "Пожалуйста, введите ваше имя."%}`);
                         event.preventDefault();
-                    } else if (!phoneInput.value.trim()) {
-                        alert("Пожалуйста, введите ваш номер телефона.");
+                    } else if (!phoneNumber) {
+                        alert(`{% translate "Пожалуйста, введите ваш номер телефона."%}`);
                         event.preventDefault();
                     } else if (!checkbox.checked) {
-                        alert("Пожалуйста, отметьте галочку о согласии на обработку данных.");
+                        alert(`{% translate "Пожалуйста, отметьте галочку о согласии на обработку данных."%}`);
                         event.preventDefault();
                     }
+                    if (!iti.isValidNumber()) {
+                        alert(`{% translate "Пожалуйста, введите номер телефона в верном формате и выберите страну."%}`);
+                        event.preventDefault();
+                    }
+                    if (iti.isValidNumber()) {
+                        phoneInput.value = phoneNumber;
+                    } 
                 });
             });
         });
-        </script>
+    </script>
+
               
     {% block scripts %}{% endblock scripts %}
 </body>

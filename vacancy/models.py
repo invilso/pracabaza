@@ -1,12 +1,28 @@
+from decimal import Decimal
 import re
 from django.db import models
 from imagekit.models import ImageSpecField
 from imagekit.processors import ResizeToFill
 from django.utils import timezone
 from info_pages.models import upload_to
+from django.utils.translation import gettext as _
 
 class InvalidLink(Exception):
     pass
+
+CURRENCY_CHOICES = (
+    ('EUR', 'Euro'),
+    ('UAH', 'Hryvnia'),
+    ('USD', 'US Dollar'),
+    ('PLN', 'Polish Złoty'),
+)
+
+CURRENCY_SYMBOLS = {
+    'EUR': '€',
+    'UAH': '₴',
+    'USD': '$',
+    'PLN': 'zł',
+}
 
 def extract_youtube_video_id(url):
     # Регулярное выражение для извлечения идентификатора видео из ссылок на YouTube
@@ -27,72 +43,72 @@ def create_youtube_embedded(link, width=560, height=315):
     return html
 
 class State(models.Model):
-    name = models.CharField(verbose_name='Название', max_length=300, unique=True)
+    name = models.CharField(verbose_name=_('Название'), max_length=300, unique=True)
 
     def __str__(self):
         return self.name
 
     class Meta:
         ordering = ['name']
-        verbose_name = 'Регион'
-        verbose_name_plural = 'Регионы'
+        verbose_name = _('Регион')
+        verbose_name_plural = _('Регионы')
 
 class City(models.Model):
-    name = models.CharField(verbose_name="Название города", max_length=200, unique=True)
+    name = models.CharField(verbose_name=_("Название города"), max_length=200, unique=True)
 
     def __str__(self):
         return self.name
 
     class Meta:
         ordering = ['name']
-        verbose_name = 'Город'
-        verbose_name_plural = 'Города'
+        verbose_name = _('Город')
+        verbose_name_plural = _('Города')
 
 class Sex(models.Model):
-    name = models.CharField(verbose_name='Пол', max_length=100, unique=True)
+    name = models.CharField(verbose_name=_('Пол'), max_length=100, unique=True)
 
     def __str__(self):
         return self.name
 
     class Meta:
-        verbose_name = 'Пол'
-        verbose_name_plural = 'Пол'
+        verbose_name = _('Пол')
+        verbose_name_plural = _('Пол')
   
 class InfoLabel(models.Model):
-    house = models.CharField(max_length=512, verbose_name='Жилье')
-    benefits = models.CharField(max_length=512, verbose_name='Выгоды')
+    house = models.CharField(max_length=512, verbose_name=_('Жилье'))
+    benefits = models.CharField(max_length=512, verbose_name=_('Выгоды'))
 
     def __str__(self):
         return f'{self.house[:50]}|{self.benefits[:50]}'
 
     class Meta:
-        verbose_name = 'Описание Стандарт'
-        verbose_name_plural = 'Описания Стандарт'
+        verbose_name = _('Описание Стандарт')
+        verbose_name_plural = _('Описания Стандарт')
   
 class Category(models.Model):
-    name = models.CharField(verbose_name='Название', max_length=300, unique=True)
+    name = models.CharField(verbose_name=_('Название'), max_length=300, unique=True)
 
     def __str__(self):
         return self.name
 
     class Meta:
         ordering = ['name']
-        verbose_name = 'Категория'
-        verbose_name_plural = 'Категории'
+        verbose_name = _('Категория')
+        verbose_name_plural = _('Категории')
   
 class Index(models.Model):
-    name = models.CharField(verbose_name='Индекс', max_length=300, unique=True)
+    name = models.CharField(verbose_name=_('Индекс'), max_length=300, unique=True)
 
     def __str__(self):
         return self.name
 
     class Meta:
-        verbose_name = 'Индекс'
-        verbose_name_plural = 'Индексы'
+        verbose_name = _('Индекс')
+        verbose_name_plural = _('Индексы')
         
         
 class Photo(models.Model):
-    file = models.ImageField(verbose_name='Файл', upload_to=upload_to)
+    file = models.ImageField(verbose_name=_('Файл'), upload_to=upload_to)
     file_thumbnail_list = ImageSpecField(source='file',
                                       processors=[ResizeToFill(432, 153)],
                                       format='JPEG',
@@ -106,13 +122,13 @@ class Photo(models.Model):
         return self.file.name
       
     class Meta:
-        verbose_name = 'Фотография'
-        verbose_name_plural = 'Фотографии'
+        verbose_name = _('Фотография')
+        verbose_name_plural = _('Фотографии')
         
 class Video(models.Model):
-    file = models.FileField(verbose_name='Файл (Если нет ссылки на YT)', null=True, blank=True, upload_to=upload_to)
-    url = models.URLField(verbose_name='Ссылка на YouTube (если есть)', null=True, blank=True)
-    embeded = models.CharField(max_length=500, verbose_name='Встройка в YouTube (не изменять)', null=True, blank=True)
+    file = models.FileField(verbose_name=_('Файл (Если нет ссылки на YT)'), null=True, blank=True, upload_to=upload_to)
+    url = models.URLField(verbose_name=_('Ссылка на YouTube (если есть)'), null=True, blank=True)
+    embeded = models.CharField(max_length=500, verbose_name=_('Встройка в YouTube (не изменять)'), null=True, blank=True)
 
     def __str__(self):
         return self.file or self.url
@@ -123,29 +139,60 @@ class Video(models.Model):
         super().save(*args, **kwargs)
         
     class Meta:
-        verbose_name = 'Видеозапись'
-        verbose_name_plural = 'Видеозаписи'
+        verbose_name = _('Видеозапись')
+        verbose_name_plural = _('Видеозаписи')
         
 class WorkDuty(models.Model):
-    description = models.TextField(verbose_name='Описание обязанности', unique=True)
+    description = models.TextField(verbose_name=_('Описание обязанности'), unique=True)
 
     def __str__(self):
         return self.description
 
     class Meta:
-        verbose_name = 'Обязанность по работе'
-        verbose_name_plural = 'Обязанности по работе'
+        verbose_name = _('Обязанность по работе')
+        verbose_name_plural = _('Обязанности по работе')
         
-class HourlyPaymentOption(models.Model):
-    payment_type = models.CharField(max_length=100, verbose_name='Тип оплаты (для студентов, ночные, испытательный и тд.)')
-    hourly_rate = models.DecimalField(max_digits=10, decimal_places=2, verbose_name='Почасовая ставка')
+class Requirement(models.Model):
+    description = models.TextField(verbose_name=_('Описание требования'), unique=True)
 
     def __str__(self):
-        return f"{self.payment_type}: {self.hourly_rate} zl/час"
+        return self.description
 
     class Meta:
-        verbose_name = 'Вариант почасовой оплаты'
-        verbose_name_plural = 'Варианты почасовой оплаты'
+        verbose_name = _('Требование к кандидату')
+        verbose_name_plural = _('Требования к кандидатам')
+        
+
+        
+class Salary(models.Model):
+    amount = models.DecimalField(max_digits=10, decimal_places=2, verbose_name=_('Сумма'))
+    currency = models.CharField(max_length=5, verbose_name=_('Валюта'), choices=CURRENCY_CHOICES)
+    
+    class Meta:
+        constraints = [
+            models.UniqueConstraint(fields=['amount', 'currency'], name='unique_amount_currency')
+        ]
+    
+    def __str__(self) -> str:
+        return f'{self.amount} {self.currency}'
+    
+    @property
+    def symbol(self) -> str:
+        return CURRENCY_SYMBOLS.get(self.currency, self.currency)
+
+
+class HourlyPaymentOption(models.Model):
+    payment_type = models.CharField(max_length=100, verbose_name=_('Тип оплаты (для студентов, ночные, испытательный и тд.)'))
+    hourly_rate = models.DecimalField(max_digits=10, decimal_places=2, verbose_name=_('Сумма'), default=Decimal(5))
+
+    def __str__(self):
+        if self.hourly_rate:
+            return f"{self.payment_type}: {self.hourly_rate}/h"
+        return f"{self.payment_type}"
+
+    class Meta:
+        verbose_name = _('Вариант почасовой оплаты')
+        verbose_name_plural = _('Варианты почасовой оплаты')
 
 class View(models.Model):
     ip = models.CharField(max_length=64, null=True, blank=True)
@@ -157,48 +204,57 @@ class View(models.Model):
     mobile = models.BooleanField(blank=True, null=True)
 
 class Vacancy(models.Model):
-    name = models.CharField(verbose_name='Название вакансии', max_length=300)
-    title = models.CharField(verbose_name='Заголовок вакансии', max_length=300)
-    city = models.ForeignKey(City, on_delete=models.CASCADE, verbose_name="Место работы")
-    state = models.ForeignKey(State, on_delete=models.CASCADE, verbose_name="Регион")
-    card_photo = models.ForeignKey(Photo, on_delete=models.CASCADE, verbose_name="Картинка карточки вакансии и обложки", related_name='vacancy_card_photo')
-    photos = models.ManyToManyField(Photo, verbose_name='Фотографии вакансии')
-    video = models.ForeignKey(Video, on_delete=models.CASCADE, verbose_name='Видеозапись вакансии', null=True, blank=True)
-    info_label = models.ForeignKey(InfoLabel, on_delete=models.SET_NULL, verbose_name="Описание стандарт", null=True, blank=True)
-    salary_per_hour = models.ManyToManyField(HourlyPaymentOption, verbose_name="Варианты почасовой оплаты")
-    salary_per_mounth_min = models.IntegerField(verbose_name='Ставка месячная минимум (zlot)', null=True, blank=True)
-    salary_per_mounth_max = models.IntegerField(verbose_name='Ставка месячная максимум (zlot)', null=True, blank=True)
-    salary_per_mounth_fixed = models.IntegerField(verbose_name='Ставка месячная фиксированая (если нет минимума или максимума) (zlot)', null=True, blank=True)
-    salary_per_hour_fixed = models.FloatField(verbose_name='Ставка почасовая (если нет месячной) (zlot)', null=True, blank=True)
-    salary_is_netto = models.BooleanField(verbose_name='Зарплата netto?', default=True)
-    work_duties = models.ManyToManyField(WorkDuty, verbose_name='Обязанности по работе')
-    work_schedule = models.TextField(verbose_name='График работы', blank=True, null=True)
-    date_time = models.DateTimeField(auto_now_add=True, verbose_name='Дата создания')
-    date_time_update = models.DateTimeField(auto_now=True, verbose_name='Дата изменения')
-    sex = models.ManyToManyField(Sex, verbose_name='Пол')
-    category = models.ForeignKey(Category, on_delete=models.CASCADE, verbose_name="Категория")
-    index = models.ForeignKey(Index, on_delete=models.CASCADE, verbose_name="Индекс (служебное)", null=True, blank=True)
-    description = models.TextField(verbose_name="Описание", null=True, blank=True)
-    active = models.BooleanField(verbose_name='Активно', default=True)
+    name = models.CharField(verbose_name=_('Название вакансии'), max_length=300)
+    title = models.CharField(verbose_name=_('Заголовок вакансии'), max_length=300)
+    city = models.ForeignKey(City, on_delete=models.CASCADE, verbose_name=_("Место работы"))
+    state = models.ForeignKey(State, on_delete=models.CASCADE, verbose_name=_("Регион"))
+    card_photo = models.ForeignKey(Photo, on_delete=models.CASCADE, verbose_name=_("Картинка карточки вакансии и обложки"), related_name='vacancy_card_photo')
+    photos = models.ManyToManyField(Photo, verbose_name=_('Фотографии вакансии'))
+    video = models.ForeignKey(Video, on_delete=models.CASCADE, verbose_name=_('Видеозапись вакансии'), null=True, blank=True)
+    info_label = models.ForeignKey(InfoLabel, on_delete=models.SET_NULL, verbose_name=_("Описание стандарт"), null=True, blank=True)
+    salary_per_hour = models.ManyToManyField(HourlyPaymentOption, verbose_name=_("Варианты почасовой оплаты"), blank=True)
+    salary_per_mounth_min = models.DecimalField(max_digits=10, decimal_places=2, verbose_name='Ставка месячная минимум', null=True, blank=True)
+    salary_per_mounth_max = models.DecimalField(max_digits=10, decimal_places=2, verbose_name='Ставка месячная максимум', null=True, blank=True)
+    salary_per_mounth_fixed = models.DecimalField(max_digits=10, decimal_places=2, verbose_name='Ставка месячная фиксированая (если нет минимума или максимума)', null=True, blank=True)
+    salary_per_hour_fixed = models.DecimalField(max_digits=10, decimal_places=2, verbose_name='Ставка почасовая (если нет месячной)', null=True, blank=True)
+    default_currency = models.CharField(max_length=5, verbose_name=_('Валюта по умолчанию'), choices=CURRENCY_CHOICES, default="PLN")
+    salary_is_netto = models.BooleanField(verbose_name=_('Зарплата netto?'), default=True)
+    work_duties = models.ManyToManyField(WorkDuty, verbose_name=_('Обязанности по работе'), blank=True)
+    requirements = models.ManyToManyField(Requirement, verbose_name=_('Требования к кандидату'), blank=True)
+    work_schedule = models.TextField(verbose_name=_('График работы'), blank=True, null=True)
+    date_time = models.DateTimeField(auto_now_add=True, verbose_name=_('Дата создания'))
+    date_time_update = models.DateTimeField(auto_now=True, verbose_name=_('Дата изменения'))
+    sex = models.ManyToManyField(Sex, verbose_name=_('Пол'))
+    category = models.ForeignKey(Category, on_delete=models.CASCADE, verbose_name=_("Категория"))
+    index = models.ForeignKey(Index, on_delete=models.CASCADE, verbose_name=_("Индекс (служебное)"), null=True, blank=True)
+    description = models.TextField(verbose_name=_("Описание"), null=True, blank=True)
+    active = models.BooleanField(verbose_name=_('Активно'), default=True)
+    irrelevant = models.BooleanField(verbose_name=_('Не актуально'), default=False)
+    with_experience = models.BooleanField(verbose_name=_('C опытом работы'), default=False)
     views = models.ManyToManyField(View, blank=True)
     
+    @property
+    def symbol(self):
+        return CURRENCY_SYMBOLS.get(self.default_currency, self.default_currency)
+    
+    
     def _get_salary_text(self, is_netto_text):
+        from_text = _('от')
+        to_text = _('до')
         if self.salary_per_mounth_fixed is not None:
-            return f"{self.salary_per_mounth_fixed} zł"
+            return f"{self.salary_per_mounth_fixed} {self.symbol}"
         elif self.salary_per_mounth_min is not None and self.salary_per_mounth_max is not None:
-            return f"{self.salary_per_mounth_min} - {self.salary_per_mounth_max} zł"
+            return f"{self.salary_per_mounth_min} - {self.salary_per_mounth_max} {self.symbol}"
         elif self.salary_per_mounth_min is not None:
-            return f"от {self.salary_per_mounth_min} zł"
+            return f"{from_text} {self.salary_per_mounth_min} {self.symbol}"
         elif self.salary_per_mounth_max is not None:
-            return f"до {self.salary_per_mounth_max} zł"
+            return f"{to_text} {self.salary_per_mounth_max} {self.symbol}"
         elif self.salary_per_hour_fixed:
-            if not self.salary_per_hour_fixed.is_integer():
-                return f"{self.salary_per_hour_fixed:5.2f} zł/час {is_netto_text}"
-            return f"{int(self.salary_per_hour_fixed)} zł/час {is_netto_text}"
+            return f"{self.salary_per_hour_fixed} {self.symbol}/h {is_netto_text}"
         else:
             return ""
     
-    def get_salary_text_list(self):
+    def get_salary_text_for_vacancy_list(self):
         return self._get_salary_text('')
 
     
@@ -214,9 +270,9 @@ class Vacancy(models.Model):
     def embeded(self):
         return self.video.embeded if self.video else ""
 
-    embeded.short_description = 'Встройка в YouTube'
+    embeded.short_description = _('Встройка в YouTube')
 
     class Meta:
         ordering = ['name']
-        verbose_name = 'Вакансия'
-        verbose_name_plural = 'Вакансии'
+        verbose_name = _('Вакансия')
+        verbose_name_plural = _('Вакансии')

@@ -11,7 +11,7 @@
             </div>
             <div class="modal-body">
                 {% if want_partner %}
-                <span>Если Вы хотите стать нашим партнером-рекрутером и зарабатывать от 500 до 800 злотых за каждого нанятого сотрудника, пожалуйста, заполните форму с контактами, и мы свяжемся с Вами.</span>
+                <span>{% translate "Если Вы хотите стать нашим партнером-рекрутером и зарабатывать от 500 до 800 злотых за каждого нанятого сотрудника, пожалуйста, заполните форму с контактами, и мы свяжемся с Вами."%}</span>
                 {% endif %}
                 <form class="p-1" action="{% url 'vacancy:apply' %}" method="post" enctype="multipart/form-data">
                     {% csrf_token %}
@@ -20,41 +20,41 @@
                         <input id="partner-want-input" style='display: none;' class="form-control" type="text" name="want_partner" value="{% if want_partner %}1{% endif %}">
                     </div>
                     <div class="mb-3">
-                        <label for="name">Имя:</label>
-                        <input class="form-control" type="text" placeholder="Ваше Имя" id='name' name='name'>
+                        <label for="name">{% translate "Имя:"%}</label>
+                        <input class="form-control" type="text" placeholder="{% translate 'Ваше Имя' %}" id='name' name='name'>
                     </div>
                     {% if not want_partner %}
                     <div class="mb-3">
-                        <label for="vacancy">{% if want_partner %}Сообщение{% else %}Желаемая работа{% endif %}:</label>
-                        <input class="form-control" type="text" placeholder="{% if vacancy %}{{vacancy.category.name}}{% else %}{% if want_partner %}Введите ваше сообщение{% else %}Введите название желаемой работы{% endif %}{% endif %}" id='vacancy' name='vacancy'>
+                        <label for="vacancy">{% if want_partner %}{% translate "Сообщение"%}{% else %}{% translate "Желаемая работа"%}{% endif %}:</label>
+                        <input class="form-control" type="text" placeholder="{% if vacancy %}{{vacancy.category.name}}{% else %}{% if want_partner %}{% translate 'Введите ваше сообщение' %}{% else %}{% translate 'Введите название желаемой работы' %}{% endif %}{% endif %}" id='vacancy' name='vacancy'>
                     </div>
                     {% endif %}
                     <div class="mb-3">
-                        <div id="phoneLabel">Телефон:</div>
-                        <input class="form-control phone-number-input w-100" type="text" placeholder="Номер телефона" name='phone' aria-labelledby="phoneLabel">
+                        <div id="phoneLabel">{% translate "Телефон:"%}</div>
+                        <input class="form-control phone-number-input w-100" type="text" name='phone' aria-labelledby="phoneLabel">
                     </div>
                     {% if want_partner %}
                     <div class="mb-3">
-                        <label for="vacancy">Ваш запрос:</label>
-                        <textarea class="form-control" type="text" placeholder="Введите ваше сообщение" name='vacancy'>Хочу стать партнером</textarea>
+                        <label for="vacancy">{% translate "Ваш запрос:"%}</label>
+                        <textarea class="form-control" type="text" placeholder="{% translate 'Введите ваше сообщение' %}" name='vacancy'>{% translate 'Хочу стать партнером' %}</textarea>
                     </div>
                     {% endif %}
                     <div class="mb-3 form-check">
                         <input class="form-check-input" type="checkbox" id="check1" name="checkbox">
-                        <label class="form-check-label" style='font-size: 10pt;'>Я даю согласие на обработку моих персональных данных компанией Pracabaza Sp. z.o.o. Предоставление данных является добровольным, но необходимым для обработка запроса и предоставление услуги. Подробная информация об объеме и целях обработки данных нами персональные данные и права субъектов данных можно найти в нашей политике конфиденциальности.</label>
+                        <label class="form-check-label" style='font-size: 10pt;'>{% translate "Я даю согласие на обработку моих персональных данных компанией Pracabaza Sp. z.o.o. Предоставление данных является добровольным, но необходимым для обработка запроса и предоставление услуги. Подробная информация об объеме и целях обработки данных нами персональные данные и права субъектов данных можно найти в нашей политике конфиденциальности."%}</label>
                     </div>
                     {% if show_resume_modal %}
                     <div class="row-upload">
                         <label>
                             <img src="{% static 'main/img/upload.png' %}" alt="img">
                             <input type="file" id="myFile" name="file" style="position: absolute; left: -9999px;">
-                            <span>Прикрепить резюме</span>
+                            <span>{% translate "Прикрепить резюме"%}</span>
                         </label>
                     </div>
                     {% endif %}
                     <div class="mb-3">
                         <button id="comment-button" type="submit" class="btn btn-lg btn-secondary">
-                            Оставить заявку
+                            {% translate "Оставить заявку"%}
                         </button>
                     </div>
                 </form>

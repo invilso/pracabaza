@@ -1,52 +1,53 @@
 {% extends 'base.html' %}
 {% load static %}
-{% block title %}Pracabaza - О нас{% endblock title %}
+{% load i18n %}
+{% block title %}{% translate "Pracabaza - О нас"%}{% endblock title %}
 {% block static %}
 <link rel="stylesheet" href="{% static 'main/css/scroll_styles.css' %}">
 <link rel="stylesheet" href="{% static 'main/css/media_styles.css' %}">
 <link rel="stylesheet" href="{% static 'main/css/custom_styles.css' %}">
 {% comment %} <link rel="stylesheet" href="{% static 'vacancy/css/background_styles.css' %}"> {% endcomment %}
 <style>
-{% comment %} @media (max-width: 767px) {
-  .image-wrapper img {
-    content: url("{% static 'main/img/background_sm.png' %}");
-    width: 100%;
-  }
-} {% endcomment %}
-
-@media (max-width: 991px) {
-    #phone, #name, #vacancy {
-      width: 300px; /* Или другое значение, если вы хотите изменить ширину на меньших экранах */
+  {% comment %} @media (max-width: 767px) {
+    .image-wrapper img {
+      content: url("{% static 'main/img/background_sm.png' %}");
+      width: 100%;
     }
-}
+  } {% endcomment %}
 
-@media (max-width: 767px) {
-  #phone, #name, #vacancy {
-    width: 250px; /* Или другое значение, если вы хотите изменить ширину на меньших экранах */
+  @media (max-width: 991px) {
+      #phone, #name, #vacancy {
+        width: 300px; /* Или другое значение, если вы хотите изменить ширину на меньших экранах */
+      }
   }
-}
-.carousel-control-prev,
-.carousel-control-next {
-  top: 50%; /* Расположить по вертикали на 50% */
-  transform: translateY(-50%); /* Поднять на половину высоты элемента */
-  bottom: auto; /* Убрать нижнее позиционирование */
-}
 
-.carousel-control-prev {
-  left: 0; /* Расположить слева */
-}
+  @media (max-width: 767px) {
+    #phone, #name, #vacancy {
+      width: 250px; /* Или другое значение, если вы хотите изменить ширину на меньших экранах */
+    }
+  }
+  .carousel-control-prev,
+  .carousel-control-next {
+    top: 50%; /* Расположить по вертикали на 50% */
+    transform: translateY(-50%); /* Поднять на половину высоты элемента */
+    bottom: auto; /* Убрать нижнее позиционирование */
+  }
 
-.carousel-control-next {
-  right: 0; /* Расположить справа */
-}
+  .carousel-control-prev {
+    left: 0; /* Расположить слева */
+  }
 
-.carousel-indicators {
-  bottom: 0; /* Переместить индикаторы на нижний край */
-  margin-bottom: 20px; /* Добавить немного отступа снизу */
-}
-.embed-responsive img {
-  border-radius: 10px; /* Задайте желаемый радиус закругления */
-}
+  .carousel-control-next {
+    right: 0; /* Расположить справа */
+  }
+
+  .carousel-indicators {
+    bottom: 0; /* Переместить индикаторы на нижний край */
+    margin-bottom: 20px; /* Добавить немного отступа снизу */
+  }
+  .embed-responsive img {
+    border-radius: 10px; /* Задайте желаемый радиус закругления */
+  }
 </style>
 <style>
   .main-text-header {
@@ -115,23 +116,23 @@
 </style>
 
 <style>
-.custom-btn-xl {
-  font-size: 1.5rem; /* Размер шрифта */
-  padding: 0.5rem 1rem; /* Внутренние отступы кнопки */
-}
+  .custom-btn-xl {
+    font-size: 1.5rem; /* Размер шрифта */
+    padding: 0.5rem 1rem; /* Внутренние отступы кнопки */
+  }
 
-body {
-  overflow-x: hidden;
-}
+  body {
+    overflow-x: hidden;
+  }
 
-.header {
-  background-color: rgb(51 51 51)
-}
-.image-crop {
-  object-fit: cover;
-  width: 100%;
-  height: 100%;
-}
+  .header {
+    background-color: rgb(51 51 51)
+  }
+  .image-crop {
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+  }
 </style>
 
 <style>
@@ -194,7 +195,7 @@ body {
         </div>
         <div class='row p-3 mt-2'>
           <div class='text-center'>
-            <h3><b>Наша команда</b></h3>
+            <h3><b>{% translate "Наша команда"%}</b></h3>
           </div>
           {% if team.count >= 8 %}
           <div class="col-1 d-flex justify-content-between align-items-center">

@@ -1,19 +1,20 @@
+{% load i18n %}
 <footer class="footer bg-dark pb-1">
     <div class="container">
         <div class="row justify-content-center text-center py-2">
             <div class="col-12 col-lg-2 d-flex flex-column">
-                <h5 class="text-light mb-0">Другие сервисы</h5>
-                <a class="link-secondary text-secondary link-underline-opacity-0" style='text-decoration: none;' href="{% url 'info:about_us' %}" target="_blank">О нас</a>
+                <h5 class="text-light mb-0">{% translate "Другие сервисы" %}</h5>
+                <a class="link-secondary text-secondary link-underline-opacity-0" style='text-decoration: none;' href="{% url 'info:about_us' %}" target="_blank">{% translate "О нас" %}</a>
             </div>
             <div class="col-12 col-lg-3 d-flex flex-column my-1 my-lg-0">
-                <h5 class="text-light mb-0">Ресурсы</h5>
+                <h5 class="text-light mb-0">{% translate "Ресурсы" %}</h5>
                 {% for legal in legals %}
                 <a class="link-secondary text-secondary link-underline-opacity-0" style='text-decoration: none;' href="{% url 'info:legal' pk=legal.pk %}">{{legal.name}}</a>
                 {% endfor %}
             </div>
             <div class="col-12 col-lg-2 d-flex flex-column">
                 
-                <h5 class="text-light mb-0" id='contacts_base'>Мы в соц. сетях</h5>
+                <h5 class="text-light mb-0" id='contacts_base'>{% translate "Мы в соц. сетях"%}</h5>
                 <div class='row mx-2 mt-2'>
                     <div class='col-11 mx-auto'>
                         {% for network in socials_footer %}

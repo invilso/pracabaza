@@ -59,6 +59,7 @@ cover/
 *.log
 local_settings.py
 db.sqlite3
+db.sqlite3_*
 db.sqlite3-journal
 
 # Flask stuff:
@@ -146,6 +147,8 @@ cython_debug/
 
 media/
 staticfiles/
+backups/
+main.py
 # PyCharm
 #  JetBrains specific template is maintainted in a separate JetBrains.gitignore that can
 #  be found at https://github.com/github/gitignore/blob/main/Global/JetBrains.gitignore

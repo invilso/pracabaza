@@ -1,52 +1,46 @@
 {% extends 'base.html' %}
 {% load static %}
-{% block title %}Pracabaza - О нас{% endblock title %}
+{% load i18n %}
+{% block title %}{% translate "Pracabaza - О нас" %}{% endblock title %}
 {% block static %}
 <link rel="stylesheet" href="{% static 'main/css/scroll_styles.css' %}">
 <link rel="stylesheet" href="{% static 'main/css/media_styles.css' %}">
 <link rel="stylesheet" href="{% static 'main/css/custom_styles.css' %}">
 <link rel="stylesheet" href="{% static 'vacancy/css/background_styles.css' %}">
 <style>
-{% comment %} @media (max-width: 767px) {
-  .image-wrapper img {
-    content: url("{% static 'main/img/background_sm.png' %}");
-    width: 100%;
+  @media (max-width: 991px) {
+      #phone, #name, #vacancy {
+        width: 300px; /* Или другое значение, если вы хотите изменить ширину на меньших экранах */
+      }
   }
-} {% endcomment %}
 
-@media (max-width: 991px) {
+  @media (max-width: 767px) {
     #phone, #name, #vacancy {
-      width: 300px; /* Или другое значение, если вы хотите изменить ширину на меньших экранах */
+      width: 250px; /* Или другое значение, если вы хотите изменить ширину на меньших экранах */
     }
-}
-
-@media (max-width: 767px) {
-  #phone, #name, #vacancy {
-    width: 250px; /* Или другое значение, если вы хотите изменить ширину на меньших экранах */
   }
-}
-.carousel-control-prev,
-.carousel-control-next {
-  top: 50%; /* Расположить по вертикали на 50% */
-  transform: translateY(-50%); /* Поднять на половину высоты элемента */
-  bottom: auto; /* Убрать нижнее позиционирование */
-}
+  .carousel-control-prev,
+  .carousel-control-next {
+    top: 50%; /* Расположить по вертикали на 50% */
+    transform: translateY(-50%); /* Поднять на половину высоты элемента */
+    bottom: auto; /* Убрать нижнее позиционирование */
+  }
 
-.carousel-control-prev {
-  left: 0; /* Расположить слева */
-}
+  .carousel-control-prev {
+    left: 0; /* Расположить слева */
+  }
 
-.carousel-control-next {
-  right: 0; /* Расположить справа */
-}
+  .carousel-control-next {
+    right: 0; /* Расположить справа */
+  }
 
-.carousel-indicators {
-  bottom: 0; /* Переместить индикаторы на нижний край */
-  margin-bottom: 20px; /* Добавить немного отступа снизу */
-}
-.embed-responsive img {
-  border-radius: 10px; /* Задайте желаемый радиус закругления */
-}
+  .carousel-indicators {
+    bottom: 0; /* Переместить индикаторы на нижний край */
+    margin-bottom: 20px; /* Добавить немного отступа снизу */
+  }
+  .embed-responsive img {
+    border-radius: 10px; /* Задайте желаемый радиус закругления */
+  }
 </style>
 <style>
   .main-text-header {
@@ -115,23 +109,20 @@
 </style>
 
 <style>
-.custom-btn-xl {
-  font-size: 1.5rem; /* Размер шрифта */
-  padding: 0.5rem 1rem; /* Внутренние отступы кнопки */
-}
+  .custom-btn-xl {
+    font-size: 1.5rem; /* Размер шрифта */
+    padding: 0.5rem 1rem; /* Внутренние отступы кнопки */
+  }
 
-body {
-  overflow-x: hidden;
-}
+  body {
+    overflow-x: hidden;
+  }
 
-{% comment %} .header {
-  background-color: rgb(51 51 51)
-} {% endcomment %}
-.image-crop {
-  object-fit: cover;
-  width: 100%;
-  height: 100%;
-}
+  .image-crop {
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+  }
 </style>
 
 <style>
@@ -165,10 +156,7 @@ body {
         <img class="img-responsive" src="{% static 'main/img/waranty.jpg' %}" alt="Фото">
     </div>
     <div class='p-md-5 p-sm-2'>
-      {% comment %} <a class="custom-title-link" style='color: white;' href="{% url 'vacancy:list' %}">
-        <i class="fa-solid fa-arrow-left"></i> Вернуться к поиску
-      </a> {% endcomment %}
-      <h1 class='main-text-header p-2 mt-5'><strong>Наши гарантии</strong></h1>
+      <h1 class='main-text-header p-2 mt-5'><strong>{% translate "Наши гарантии"%}</strong></h1>
     </div>
 {% endblock image_wrapper %}
 
