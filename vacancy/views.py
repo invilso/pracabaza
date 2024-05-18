@@ -9,6 +9,9 @@ from .models import Sex, Vacancy, Category, State, View
 from django.core.mail import send_mail
 from django.utils import timezone
 from django.conf import settings
+from rest_framework import generics
+from .models import Vacancy
+from .serializers import VacancySerializer
 
 def get_user_ip(request):
     forwarded_for = request.META.get('HTTP_X_FORWARDED_FOR')
@@ -184,4 +187,7 @@ class ApplyToVacancyView(ListView):
             
             
         return redirect(request.META['HTTP_REFERER'])
-    
+
+class VacancyListViewAPI(generics.ListAPIView):
+    queryset = Vacancy.objects.all()
+    serializer_class = VacancySerializer

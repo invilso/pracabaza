@@ -13,5 +13,6 @@ urlpatterns = [
     path('', VacancyListView.as_view(), name='list'),
     path('<int:pk>', VacancyView.as_view(), name='item'),
     path('apply/', ApplyToVacancyView.as_view(), name='apply'),
+    path('api/list/', VacancyListViewAPI.as_view(), name='vacancy-list-api'),
     # path('graph/<int:pk>', Graph.as_view(), name='graph'),
 ]
