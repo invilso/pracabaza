@@ -232,6 +232,8 @@ class Vacancy(models.Model):
     irrelevant = models.BooleanField(verbose_name=_('Не актуально'), default=False)
     with_experience = models.BooleanField(verbose_name=_('C опытом работы'), default=False)
     views = models.ManyToManyField(View, blank=True)
+    source = models.CharField(max_length=250, default=None, null=True, blank=True)
+    sync_id = models.CharField(max_length=250, default=None, null=True, blank=True)
     
     @property
     def symbol(self):

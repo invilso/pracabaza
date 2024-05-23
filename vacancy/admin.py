@@ -92,9 +92,9 @@ class ViewAdmin(admin.ModelAdmin):
 
 @admin.register(Vacancy)
 class VacancyAdmin(TranslationAdmin):
-    list_display = ('name', 'city', 'index', 'active', 'irrelevant', 'date_time', 'date_time_update')
-    list_filter = ('city', 'state', 'category', 'sex')
-    search_fields = ('name', 'city__name', 'index__name', 'category__name')
+    list_display = ('name', 'city', 'index', 'active', 'irrelevant', 'date_time', 'date_time_update', 'sync_id')
+    list_filter = ('city', 'state', 'category', 'sex', 'source')
+    search_fields = ('name', 'city__name', 'index__name', 'category__name', 'source')
 
     filter_horizontal = ('photos', 'salary_per_hour', 'work_duties', 'requirements', 'sex', 'views')
     readonly_fields = ('embeded', 'views', 'date_time', 'date_time_update')
