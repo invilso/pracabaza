@@ -1,6 +1,7 @@
 import requests
 from .models import City, State, Photo, Video, InfoLabel, HourlyPaymentOption, WorkDuty, Requirement, Sex, Category, Index, Vacancy
 from django.db import transaction, models
+from django.conf import settings
 
 def get_or_create_related_object(model, data):
     obj, created = model.objects.get_or_create(**data)
@@ -69,9 +70,8 @@ def create_or_update_vacancies_from_json(data, source):
         
 
 def refresh_data_from_sources():
-    sources = [
-        'http://127.0.0.1:8002'
-    ]
+    sources: str = settings.DATA_SOURCES
+    sources = sources.split(',')
     API_ENDPOINT = '/vacancy/api/list/'
     for source in sources:
         response = requests.get(source+API_ENDPOINT)
