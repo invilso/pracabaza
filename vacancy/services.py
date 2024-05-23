@@ -33,12 +33,14 @@ def create_or_update_vacancies_from_json(data, source):
         category_data = vacancy_data.pop('category')
         index_data = vacancy_data.pop('index', None)
         views = vacancy_data.pop('views')
+        vacancy_data['sync_id'] = f'{obj_id}-{source}'
 
         city = update_or_create_related_object(City, city_data)
         state = update_or_create_related_object(State, state_data)
-        card_photo = update_or_create_related_object(Photo, card_photo_data)
-        photos = [update_or_create_related_object(Photo, photo) for photo in photos_data]
-        video = update_or_create_related_object(Video, video_data) if video_data else None
+        if not Vacancy.objects.filter(sync_id=vacancy_data['sync_id']).exists():
+            card_photo = Photo.objects.first()
+            photos = Photo.objects.all()[:5]
+            video = None
         info_label = update_or_create_related_object(InfoLabel, info_label_data) if info_label_data else None
         salary_per_hour = [update_or_create_related_object(HourlyPaymentOption, option) for option in salary_per_hour_data]
         work_duties = [update_or_create_related_object(WorkDuty, duty) for duty in work_duties_data]
@@ -55,7 +57,7 @@ def create_or_update_vacancies_from_json(data, source):
         vacancy_data['category'] = category
         vacancy_data['index'] = index
         vacancy_data['source'] = source
-        vacancy_data['sync_id'] = f'{obj_id}-{source}'
+        
 
         vacancy, created = Vacancy.objects.update_or_create(
             sync_id=vacancy_data['sync_id'],
