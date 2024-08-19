@@ -185,8 +185,8 @@
                       {% for vacancy in vacancies %}
                       <div class="col-md-5 col-12 col-sm-8 col-lg-4 mt-2">
                         <div class="card h-100" style="opacity: {% if vacancy.irrelevant %}0.7{% else %}1.0{% endif %};">
-                            {% comment %} <img src="{{vacancy.card_photo.file_thumbnail_list.url}}" class="card-img-top" alt="..."> {% endcomment %}
-                            <img src="https://pracabaza.pl/media/uploads/2024-08-19_12-28/no-image.jpg" class="card-img-top" alt="..." width='430' height='150'>
+                            <img src="{{vacancy.photos.first.file_thumbnail_list.url}}" class="card-img-top" alt="...">
+                            {% comment %} <img src="https://pracabaza.pl/media/uploads/2024-08-19_12-28/no-image.jpg" class="card-img-top" alt="..." width='430' height='150'> {% endcomment %}
                             <div class="card-body d-flex flex-column">
                                 <h5 class="card-title">
                                     <a href="{% url 'vacancy:item' pk=vacancy.pk %}" class="custom-title-link">{{ vacancy.name }}</a>
