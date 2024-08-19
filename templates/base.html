@@ -42,15 +42,15 @@
                 <div class="collapse navbar-collapse" id="navbarNav">
                     <ul class="navbar-nav ml-auto">
                         <li class="nav-item {% if selected_nav_name == 'vacancies' %}selected{% endif %}"><a class="nav-link text-white" href="{% url 'vacancy:list' %}">{% translate "Вакансии"%}</a></li>
-                        <li class="nav-item {% if selected_nav_name == 'guaranties' %}selected{% endif %}"><a class="nav-link text-light" href="{% url 'info:waranty' %}">{% translate "Гарантии"%}</a></li>
-                        <li class="nav-item {% if selected_nav_name == 'a_us' %}selected{% endif %}"><a class="nav-link text-light" href="{% url 'info:about_us' %}">{% translate "О нас"%}</a></li>
-                        <li class="nav-item {% if selected_nav_name == 'contats' %}selected{% endif %}"><a class="nav-link text-light" href="{% url 'info:contacts' %}">{% translate "Контакты"%}</a></li>
+                        {% comment %} <li class="nav-item {% if selected_nav_name == 'guaranties' %}selected{% endif %}"><a class="nav-link text-light" href="{% url 'info:waranty' %}">{% translate "Гарантии"%}</a></li> {% endcomment %}
+                        {% comment %} <li class="nav-item {% if selected_nav_name == 'a_us' %}selected{% endif %}"><a class="nav-link text-light" href="{% url 'info:about_us' %}">{% translate "О нас"%}</a></li> {% endcomment %}
+                        {% comment %} <li class="nav-item {% if selected_nav_name == 'contats' %}selected{% endif %}"><a class="nav-link text-light" href="{% url 'info:contacts' %}">{% translate "Контакты"%}</a></li> {% endcomment %}
                         <li class="nav-item d-block d-lg-none">
                             <button class="btn btn-primary btn-block mt-3" data-bs-toggle="modal" data-bs-target="#applyModal">{% translate "Связаться"%}</button>
                         </li>
-                        <li class="nav-item d-block d-lg-none">
-                            <button class="btn btn-secondary btn-block mt-3" data-bs-toggle="modal" data-bs-target="#applyPartnerModal">{% translate "Стать партнером"%}</button>
-                        </li>
+                        {% comment %} <li class="nav-item d-block d-lg-none"> {% endcomment %}
+                            {% comment %} <button class="btn btn-secondary btn-block mt-3" data-bs-toggle="modal" data-bs-target="#applyPartnerModal">{% translate "Стать партнером"%}</button> {% endcomment %}
+                        {% comment %} </li> {% endcomment %}
                         <li class="nav-item d-block d-lg-none">
                             <button type="button" class="btn btn-primary btn-block mt-3" data-toggle="modal" data-target="#languageModal">
                                 {% get_current_language as LANGUAGE_CODE %}
@@ -61,7 +61,7 @@
                     </ul>
                     <div class="ml-lg-3 d-none d-lg-block">
                         <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#applyModal">{% translate "Связаться"%}</button>
-                        <button class="btn btn-secondary ml-2" data-bs-toggle="modal" data-bs-target="#applyPartnerModal">{% translate "Стать партнером"%}</button>
+                        {% comment %} <button class="btn btn-secondary ml-2" data-bs-toggle="modal" data-bs-target="#applyPartnerModal">{% translate "Стать партнером"%}</button> {% endcomment %}
                         <button type="button" class="btn btn-primary ml-2" data-toggle="modal" data-target="#languageModal">
                             {% get_current_language as LANGUAGE_CODE %}
                             <i class="fas fa-globe"></i> {{ LANGUAGE_CODE|upper }}
@@ -85,7 +85,7 @@
         {% trans "Заявка на обратную связь" as apply_modal_title %}
         {% include 'apply_modal.html' with show_resume_modal=True apply_modal_title=apply_modal_title apply_modal_id='applyModal'%}
         {% trans "Заявка на становление партнером" as apply_modal_title %}
-        {% include 'apply_modal.html' with show_resume_modal=False apply_modal_title=apply_modal_title apply_modal_id='applyPartnerModal' want_partner=True%}
+        {% comment %} {% include 'apply_modal.html' with show_resume_modal=False apply_modal_title=apply_modal_title apply_modal_id='applyPartnerModal' want_partner=True%} {% endcomment %}
         {% endblock apply_modal_block %}
         {% include 'footer.html' %}
     </div>

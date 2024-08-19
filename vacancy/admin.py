@@ -5,11 +5,11 @@ from .models import Salary, State, City, Sex, InfoLabel, Category, Index, Photo,
 from tinymce.widgets import TinyMCE
 from django.db import models
 from django.utils.translation import gettext as _
-from modeltranslation.admin import TranslationAdmin
+from modeltranslation.admin import TabbedTranslationAdmin
 
 # Define Admin classes for your models
 @admin.register(State)
-class StateAdmin(TranslationAdmin):
+class StateAdmin(TabbedTranslationAdmin):
     class Media:
         js = (
             'modeltranslation_jquery/jquery.min.js',
@@ -22,7 +22,7 @@ class StateAdmin(TranslationAdmin):
     list_display = ('name',)
 
 @admin.register(City)
-class CityAdmin(TranslationAdmin):
+class CityAdmin(TabbedTranslationAdmin):
     class Media:
         js = (
             'modeltranslation_jquery/jquery.min.js',
@@ -35,7 +35,7 @@ class CityAdmin(TranslationAdmin):
     list_display = ('name',)
 
 @admin.register(Sex)
-class SexAdmin(TranslationAdmin):
+class SexAdmin(TabbedTranslationAdmin):
     class Media:
         js = (
             'modeltranslation_jquery/jquery.min.js',
@@ -48,7 +48,7 @@ class SexAdmin(TranslationAdmin):
     list_display = ('name',)
 
 @admin.register(InfoLabel)
-class InfoLabelAdmin(TranslationAdmin):
+class InfoLabelAdmin(TabbedTranslationAdmin):
     class Media:
         js = (
             'modeltranslation_jquery/jquery.min.js',
@@ -61,7 +61,7 @@ class InfoLabelAdmin(TranslationAdmin):
     list_display = ('house', 'benefits')
 
 @admin.register(Category)
-class CategoryAdmin(TranslationAdmin):
+class CategoryAdmin(TabbedTranslationAdmin):
     class Media:
         js = (
             'modeltranslation_jquery/jquery.min.js',
@@ -91,7 +91,7 @@ class ViewAdmin(admin.ModelAdmin):
     list_display = ('ip', 'date_time', 'country', 'region_name', 'city', 'isp', 'mobile')
 
 @admin.register(Vacancy)
-class VacancyAdmin(TranslationAdmin):
+class VacancyAdmin(TabbedTranslationAdmin):
     list_display = ('name', 'city', 'index', 'active', 'irrelevant', 'date_time', 'date_time_update')
     list_filter = ('city', 'state', 'category', 'sex')
     search_fields = ('name', 'city__name', 'index__name', 'category__name')
@@ -102,16 +102,6 @@ class VacancyAdmin(TranslationAdmin):
     formfield_overrides = {
         models.TextField: {'widget': TinyMCE()},
     }
-    
-    class Media:
-        js = (
-            'modeltranslation_jquery/jquery.min.js',
-            'modeltranslation_jquery/jquery-ui.min.js',
-            'modeltranslation/js/tabbed_translation_fields.js',
-        )
-        css = {
-            'screen': ('modeltranslation/css/tabbed_translation_fields.css',),
-        }
 
     fieldsets = (
         (_('Основная информация'), {

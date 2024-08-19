@@ -132,7 +132,18 @@
                             </div>
                             {% endfor %}
                         </div>
-                        <label for="irrelevant"> <i class="far fa-calendar" style="color: #0a58ca;"></i> <strong>{% translate "Актуальность:"%}</strong></label>
+
+                        <label for="profession"> <i class="fa-regular fa-location-dot " style="color: #0a58ca;"></i> <strong>{% translate "Специальность:"%}</strong></label>
+                        <div class="scroll-container" id="profession">
+                            {% for state in categories %}
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" id="check{{state.id}}cat" name="profession" value="{{state.id}}" {% if state.id in selected_categories %}checked{% endif %}>
+                                <label class="form-check-label">{{state.name}}</label>
+                            </div>
+                            {% endfor %}
+                        </div>
+
+                        {% comment %} <label for="irrelevant"> <i class="far fa-calendar" style="color: #0a58ca;"></i> <strong>{% translate "Актуальность:"%}</strong></label>
                         <div class="scroll-container" id="irrelevant">
                             <div class="form-check">
                                 <input class="form-check-input" type="radio" id="check1irrelevant" name="irrelevant" value="1" {% if 1 in selected_irrelevants %}checked{% endif %}>
@@ -153,7 +164,7 @@
                                 <input class="form-check-input" type="radio" id="check2with_experience" name="with_experience" value="2" {% if 2 in selected_with_experience %}checked{% endif %}{% if selected_with_experience|length < 1 %}checked{% endif %}>
                                 <label class="form-check-label">{% translate "Без опыта работы"%}</label>
                             </div>
-                        </div>
+                        </div> {% endcomment %}
                         <div class="row">
                             <div class='col-md-6 col-sm-12 mt-2'>
                                 <button type="submit" class="btn btn-primary w-100">{% translate "Подтвердить"%}</button>
@@ -206,7 +217,7 @@
 {% block scripts %}
 <script>
     const images_old = [
-        '{% static "main/img/list/3.jpg" %}',
+        '{% static "main/img/list/1.jpg" %}',
     ];
 
     function shuffleArray(array) {

@@ -663,3 +663,6 @@ msgstr "Obowiązki"
 
 msgid "Требования"
 msgstr "Wymagania"
+
+msgid "Специальность:"
+msgstr "Specjalność:"

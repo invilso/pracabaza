@@ -141,10 +141,8 @@ USE_L10N = True
 gettext = lambda s: s
 LANGUAGES = (
 	('ru', gettext('Russian')),
-    ('en', gettext('English')),
     ('uk', gettext('Ukrainian')),
     ('pl', gettext('Polish')),
-    ('az', gettext('Azerbaijani')),
 )
 MODELTRANSLATION_DEFAULT_LANGUAGE = 'ru'
 MODELTRANSLATION_AUTO_POPULATE = True
