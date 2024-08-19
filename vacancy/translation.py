@@ -3,7 +3,7 @@ from .models import Category, Vacancy, HourlyPaymentOption, Requirement, WorkDut
 
 @register(Vacancy)
 class VacancyTranslationOptions(TranslationOptions):
-    fields = ('name', 'title', 'description', 'work_schedule')
+    fields = ('name', 'description', 'work_schedule')
 
 @register(HourlyPaymentOption)
 class HourlyPaymentOptionTranslationOptions(TranslationOptions):

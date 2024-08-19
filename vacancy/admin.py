@@ -115,10 +115,10 @@ class VacancyAdmin(TabbedTranslationAdmin):
 
     fieldsets = (
         (_('Основная информация'), {
-            'fields': ('name', 'title', 'city', 'state', 'index', 'active', 'irrelevant', 'with_experience')
+            'fields': ('name', 'city', 'state', 'index', 'active', 'irrelevant', 'with_experience')
         }),
         (_('Медиа'), {
-            'fields': ('card_photo', 'photos', 'video', 'embeded')
+            'fields': ('photos', 'video', 'embeded')
         }),
         (_('Описание и оплата'), {
             'fields': ('info_label', 'salary_per_mounth_min', 'salary_per_mounth_max', 'salary_per_mounth_fixed', 'salary_per_hour_fixed', 'salary_is_netto', 'default_currency')

@@ -205,10 +205,10 @@ class View(models.Model):
 
 class Vacancy(models.Model):
     name = models.CharField(verbose_name=_('Название вакансии'), max_length=300)
-    title = models.CharField(verbose_name=_('Заголовок вакансии'), max_length=300)
+    title = models.CharField(verbose_name=_('Заголовок вакансии'), max_length=300, blank=True)
     city = models.ForeignKey(City, on_delete=models.CASCADE, verbose_name=_("Место работы"))
     state = models.ForeignKey(State, on_delete=models.CASCADE, verbose_name=_("Регион"))
-    card_photo = models.ForeignKey(Photo, on_delete=models.CASCADE, verbose_name=_("Картинка карточки вакансии и обложки"), related_name='vacancy_card_photo')
+    card_photo = models.ForeignKey(Photo, on_delete=models.CASCADE, verbose_name=_("Картинка карточки вакансии и обложки"), related_name='vacancy_card_photo', null=True, blank=True)
     photos = models.ManyToManyField(Photo, verbose_name=_('Фотографии вакансии'))
     video = models.ForeignKey(Video, on_delete=models.CASCADE, verbose_name=_('Видеозапись вакансии'), null=True, blank=True)
     info_label = models.ForeignKey(InfoLabel, on_delete=models.SET_NULL, verbose_name=_("Описание стандарт"), null=True, blank=True)
