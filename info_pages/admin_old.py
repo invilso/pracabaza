@@ -2,7 +2,7 @@ from django.contrib import admin
 from .models import Photo, PhoneNumber, SocialNetwork, ContactInfo, AboutUs, Guarantees, Partners, Team, LegalDocument
 from tinymce.widgets import TinyMCE
 from django.db import models
-from modeltranslation.admin import TranslationAdmin
+from modeltranslation.admin import TabbedTranslationAdmin
 
 @admin.register(Photo)
 class PhotoAdmin(admin.ModelAdmin):
@@ -11,7 +11,7 @@ class PhotoAdmin(admin.ModelAdmin):
     search_fields = ('file',)
 
 @admin.register(PhoneNumber)
-class PhoneNumberAdmin(TranslationAdmin):
+class PhoneNumberAdmin(TabbedTranslationAdmin):
     class Media:
         js = (
             'modeltranslation_jquery/jquery.min.js',
@@ -38,7 +38,7 @@ class ContactInfoAdmin(admin.ModelAdmin):
     readonly_fields = ('address_url',)
 
 @admin.register(AboutUs)
-class AboutUsAdmin(TranslationAdmin):
+class AboutUsAdmin(TabbedTranslationAdmin):
     class Media:
         js = (
             'modeltranslation_jquery/jquery.min.js',
@@ -55,7 +55,7 @@ class AboutUsAdmin(TranslationAdmin):
     }
 
 @admin.register(Guarantees)
-class GuaranteesAdmin(TranslationAdmin):
+class GuaranteesAdmin(TabbedTranslationAdmin):
     class Media:
         js = (
             'modeltranslation_jquery/jquery.min.js',
@@ -70,7 +70,7 @@ class GuaranteesAdmin(TranslationAdmin):
     search_fields = ('title',)
 
 @admin.register(Partners)
-class PartnersAdmin(TranslationAdmin):
+class PartnersAdmin(TabbedTranslationAdmin):
     class Media:
         js = (
             'modeltranslation_jquery/jquery.min.js',
@@ -85,7 +85,7 @@ class PartnersAdmin(TranslationAdmin):
     search_fields = ('name',)
 
 @admin.register(Team)
-class TeamAdmin(TranslationAdmin):
+class TeamAdmin(TabbedTranslationAdmin):
     class Media:
         js = (
             'modeltranslation_jquery/jquery.min.js',
@@ -99,7 +99,7 @@ class TeamAdmin(TranslationAdmin):
     search_fields = ('name',)
 
 @admin.register(LegalDocument)
-class LegalDocumentAdmin(TranslationAdmin):
+class LegalDocumentAdmin(TabbedTranslationAdmin):
     class Media:
         js = (
             'modeltranslation_jquery/jquery.min.js',
