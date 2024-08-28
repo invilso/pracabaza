@@ -23,12 +23,12 @@
                         <label for="name">{% translate "Имя:"%}</label>
                         <input class="form-control" type="text" placeholder="{% translate 'Ваше Имя' %}" id='name' name='name'>
                     </div>
-                    {% if not want_partner %}
+                    {% comment %} {% if not want_partner %}
                     <div class="mb-3">
                         <label for="vacancy">{% if want_partner %}{% translate "Сообщение"%}{% else %}{% translate "Желаемая работа"%}{% endif %}:</label>
                         <input class="form-control" type="text" placeholder="{% if vacancy %}{{vacancy.category.name}}{% else %}{% if want_partner %}{% translate 'Введите ваше сообщение' %}{% else %}{% translate 'Введите название желаемой работы' %}{% endif %}{% endif %}" id='vacancy' name='vacancy'>
                     </div>
-                    {% endif %}
+                    {% endif %} {% endcomment %}
                     <div class="mb-3">
                         <div id="phoneLabel">{% translate "Телефон:"%}</div>
                         <input class="form-control phone-number-input w-100" type="text" name='phone' aria-labelledby="phoneLabel">

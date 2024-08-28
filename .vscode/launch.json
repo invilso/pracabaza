@@ -5,6 +5,18 @@
     "version": "0.2.0",
     "configurations": [
         {
+            "name": "Отладчик Python: Django 2",
+            "type": "debugpy",
+            "request": "launch",
+            "args": [
+                "runserver",
+                "8001"
+            ],
+            "django": true,
+            "autoStartBrowser": false,
+            "program": "${workspaceFolder}/manage.py"
+        },
+        {
             "name": "Отладчик Python: Django",
             "type": "debugpy",
             "request": "launch",

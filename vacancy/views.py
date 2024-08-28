@@ -146,7 +146,7 @@ class ApplyToVacancyView(ListView):
         uploaded_file = request.FILES.get('file')
         v_id = request.POST.get('v_id', '')
         want_partner = request.POST.get('want_partner', '')
-        
+        v_url = request.META['HTTP_REFERER']
         if name == '' or name == 'Неизвестный':
             return redirect(request.META['HTTP_REFERER'])
             
@@ -164,7 +164,7 @@ class ApplyToVacancyView(ListView):
         if want_partner == '':      
             if v_id != '':    
                 subject = f"Отклик на вакансию от {name}"
-                message = f"Пользователь {name} подал заявку на вакансию:\n\n{vacancy_info}\n\nТелефон: {phone}"
+                message = f"Пользователь {name} подал заявку на вакансию:\n\n{vacancy_info}\n{v_url}\n\nТелефон: {phone}"
             else:
                 subject = f"Запрос на обратную связь от {name}"
                 message = f"Пользователь {name} подал заявку на обратную связь:\n\n{vacancy_info}\n\nТелефон: {phone}"

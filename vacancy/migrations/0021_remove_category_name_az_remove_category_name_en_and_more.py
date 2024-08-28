@@ -7,7 +7,7 @@ import django.db.models.deletion
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('vacancy', '0021_vacancy_source_vacancy_sync_id'),
+        ('vacancy', '0020_vacancy_with_experience'),
     ]
 
     operations = [

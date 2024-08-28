@@ -109,11 +109,11 @@
             <div class="card">
                 <div class="card-body">
                     <h5 class="card-title">
-                        <a href="#" class="custom-title-link"><i class="fa-regular fa-filters" style="color: #0a58ca;"></i> {% translate "Фильтр"%}</a>
+                        <a href="#" class="custom-title-link"><i class="fa-regular fa-filters" style="color: #198754;"></i> {% translate "Фильтр"%}</a>
                     </h5>
                     <form method='get' action="{% url 'vacancy:list' %}#search_results_link" id="filterForm">
                         
-                        <label for="location"> <i class="fa-regular fa-location-dot " style="color: #0a58ca;"></i> <strong>{% translate "Регион:"%}</strong></label>
+                        <label for="location"> <i class="fa-regular fa-location-dot " style="color: #198754;"></i> <strong>{% translate "Регион:"%}</strong></label>
                         <div class="scroll-container" id="location">
                             {% for state in states %}
                             <div class="form-check">
@@ -123,7 +123,7 @@
                             {% endfor %}
                         </div>
                         
-                        <label for="sex"><i class="fa-regular fa-user-group" style="color: #0a58ca;"></i> <strong>{% translate "Пол:"%}</strong></label>
+                        <label for="sex"><i class="fa-regular fa-user-group" style="color: #198754;"></i> <strong>{% translate "Пол:"%}</strong></label>
                         <div class="scroll-container" id="sex">
                             {% for sex in sexes %}
                             <div class="form-check">
@@ -133,7 +133,7 @@
                             {% endfor %}
                         </div>
 
-                        <label for="profession"> <i class="fa-regular fa-location-dot " style="color: #0a58ca;"></i> <strong>{% translate "Специальность:"%}</strong></label>
+                        <label for="profession"> <i class="fa-regular fa-location-dot " style="color: #198754;"></i> <strong>{% translate "Специальность:"%}</strong></label>
                         <div class="scroll-container" id="profession">
                             {% for state in categories %}
                             <div class="form-check">
@@ -143,7 +143,7 @@
                             {% endfor %}
                         </div>
 
-                        {% comment %} <label for="irrelevant"> <i class="far fa-calendar" style="color: #0a58ca;"></i> <strong>{% translate "Актуальность:"%}</strong></label>
+                        {% comment %} <label for="irrelevant"> <i class="far fa-calendar" style="color: #198754;"></i> <strong>{% translate "Актуальность:"%}</strong></label>
                         <div class="scroll-container" id="irrelevant">
                             <div class="form-check">
                                 <input class="form-check-input" type="radio" id="check1irrelevant" name="irrelevant" value="1" {% if 1 in selected_irrelevants %}checked{% endif %}>
@@ -154,7 +154,7 @@
                                 <label class="form-check-label">{% translate "Все"%}</label>
                             </div>
                         </div>
-                        <label for="with_experience"><i class="far fa-helmet-safety" style="color: #0a58ca;"></i> <strong>{% translate "Опыт работы:"%}</strong></label>
+                        <label for="with_experience"><i class="far fa-helmet-safety" style="color: #198754;"></i> <strong>{% translate "Опыт работы:"%}</strong></label>
                         <div class="scroll-container" id="with_experience">
                             <div class="form-check">
                                 <input class="form-check-input" type="radio" id="check1with_experience" name="with_experience" value="1" {% if 1 in selected_with_experience %}checked{% endif %}>

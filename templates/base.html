@@ -25,6 +25,49 @@
   </style>
   {% block static %}
   {% endblock static %}
+  <style>
+    :root {
+        --bs-primary: #198754; /* Основний зелений колір */
+        --bs-secondary: #6c757d;
+        --bs-success: #28a745;
+        --bs-info: #20c997;
+        --bs-warning: #ffc107;
+        --bs-danger: #dc3545;
+        --bs-light: #f8f9fa;
+        --bs-dark: #212529;
+        --bs-body-bg: #f0f8f5; /* Фон сторінки */
+        --bs-link-color: #0f5132; /* Колір посилань */
+        --bs-link-hover-color: #0d452d; /* Колір при наведенні на посилання */
+    }
+
+    .navbar, .footer {
+        background-color: var(--bs-primary);
+        color: white;
+    }
+
+    .btn-primary {
+        background-color: var(--bs-success);
+        border-color: var(--bs-success);
+    }
+
+    .btn-primary:hover {
+        background-color: #155724;
+        border-color: #14522e;
+    }
+
+    .btn-primary.active, .btn-primary:active {
+        background-color: #155724 !important;
+        border-color: #14522e !important;
+    }
+
+    .nav-link.text-white {
+       
+    }
+
+    p {
+        color: var(--bs-dark);
+    }
+</style>
 </head>
 <body class="d-flex flex-column h-100">
     {% block header %}
@@ -33,7 +76,7 @@
             <nav class="navbar navbar-expand-lg navbar-light bg-transparent">
                 <a class="navbar-brand" href="/">
                     {% comment %} <img src="{% static 'main/img/logo.png' %}"></img> {% endcomment %}
-                    {% comment %} <i class="fa-regular fa-briefcase" style="color: #0a58ca; font-size: 2rem;"></i> {% endcomment %}
+                    {% comment %} <i class="fa-regular fa-briefcase" style="color: #198754; font-size: 2rem;"></i> {% endcomment %}
                     <h2 style="color: #FFFFFF; font-size: 2rem;">Pracabaza</h2>
                 </a>
                 <button class="navbar-toggler navbar-dark" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
