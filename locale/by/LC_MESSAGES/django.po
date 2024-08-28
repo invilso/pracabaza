@@ -169,7 +169,7 @@ msgstr ""
 #: info_pages/templates/info_pages/about_us.html:4
 #: info_pages/templates/info_pages/contacts.html:4
 #: info_pages/templates/info_pages/waranties.html:4
-msgid "Pracabaza - О нас"
+msgid "Silesia - О нас"
 msgstr ""
 
 #: info_pages/templates/info_pages/about_us.html:201
@@ -241,7 +241,7 @@ msgstr ""
 
 #: templates/apply_modal.html:44 vacancy/templates/vacancy/list.html:88
 msgid ""
-"Я даю согласие на обработку моих персональных данных компанией Arrow-rsc Sp. "
+"Я даю согласие на обработку моих персональных данных компанией Silesia Sp. "
 "z.o.o. Предоставление данных является добровольным, но необходимым для "
 "обработка запроса и предоставление услуги. Подробная информация об объеме и "
 "целях обработки данных нами персональные данные и права субъектов данных "
@@ -258,7 +258,7 @@ msgstr ""
 
 #: templates/base.html:8 vacancy/templates/vacancy/item.html:4
 #: vacancy/templates/vacancy/list.html:3
-msgid "Pracabaza - Вакансии"
+msgid "Silesia - Вакансии"
 msgstr ""
 
 #: templates/base.html:63 vacancy/models.py:303

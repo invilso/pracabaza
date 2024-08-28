@@ -173,8 +173,8 @@ msgstr "Юридичні документи"
 #: info_pages/templates/info_pages/about_us.html:4
 #: info_pages/templates/info_pages/contacts.html:4
 #: info_pages/templates/info_pages/waranties.html:4
-msgid "Pracabaza - О нас"
-msgstr "Pracabaza - Про нас"
+msgid "Silesia - О нас"
+msgstr "Silesia - Про нас"
 
 #: info_pages/templates/info_pages/about_us.html:201
 msgid "Наша команда"
@@ -248,13 +248,13 @@ msgstr "Хочу стати партнером"
 
 #: templates/apply_modal.html:44 vacancy/templates/vacancy/list.html:89
 msgid ""
-"Я даю согласие на обработку моих персональных данных компанией Arrow-rsc Sp. "
+"Я даю согласие на обработку моих персональных данных компанией Silesia Sp. "
 "z.o.o. Предоставление данных является добровольным, но необходимым для "
 "обработка запроса и предоставление услуги. Подробная информация об объеме и "
 "целях обработки данных нами персональные данные и права субъектов данных "
 "можно найти в нашей политике конфиденциальности."
 msgstr ""
-"Я даю згоду на обробку моїх персональних даних компанією Arrow-rsc Sp. z.o."
+"Я даю згоду на обробку моїх персональних даних компанією Silesia Sp. z.o."
 "o. Надавання данних є добровільним, але необхідним для запиту та надання "
 "послуги. Детальна інформація про об'єм і цілі обробки нами персональних "
 "даних та права суб'єктів даних можна знайти в нашій політиці "
@@ -270,8 +270,8 @@ msgstr "Залишити заявку"
 
 #: templates/base.html:8 vacancy/templates/vacancy/item.html:4
 #: vacancy/templates/vacancy/list.html:4
-msgid "Pracabaza - Вакансии"
-msgstr "Pracabaza - Вакансії"
+msgid "Silesia - Вакансии"
+msgstr "Silesia - Вакансії"
 
 #: templates/base.html:63 vacancy/models.py:278
 msgid "Вакансии"
