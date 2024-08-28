@@ -603,7 +603,7 @@ msgid "Фильтр"
 msgstr ""
 
 #: vacancy/templates/vacancy/list.html:115
-msgid "Регион:"
+msgid "Города:"
 msgstr ""
 
 #: vacancy/templates/vacancy/list.html:125

@@ -592,8 +592,8 @@ msgid "Фильтр"
 msgstr "Filtr"
 
 #: vacancy/templates/vacancy/list.html:116
-msgid "Регион:"
-msgstr "Region:"
+msgid "Города:"
+msgstr "Miasta:"
 
 #: vacancy/templates/vacancy/list.html:126
 msgid "Пол:"
