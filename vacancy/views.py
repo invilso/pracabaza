@@ -5,7 +5,7 @@ from django.http import HttpRequest
 from django.shortcuts import redirect, render
 from django.views.generic.list import ListView
 import requests
-from .models import Sex, Vacancy, Category, State, View
+from .models import City, Sex, Vacancy, Category, State, View
 from django.core.mail import send_mail
 from django.utils import timezone
 from django.conf import settings
@@ -48,7 +48,7 @@ class VacancyListView(ListView):
     def get(self, request: HttpRequest): 
         vacancies = Vacancy.objects.filter(active=True)
         categories = Category.objects.all()
-        states = State.objects.all()
+        states = City.objects.all()
         sexes = Sex.objects.all()
         if request.GET.get('clear', '0') != '1':
             selected_categories = list(map(int, request.GET.getlist('profession', [])))
@@ -73,7 +73,7 @@ class VacancyListView(ListView):
             vacancies = vacancies.filter(sex__id__in=selected_sexes)
         
         if len(selected_states) > 0:
-            vacancies = vacancies.filter(state__id__in=selected_states)
+            vacancies = vacancies.filter(city__id__in=selected_states)
             
         
                 
