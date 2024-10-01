@@ -31,7 +31,7 @@ if os.getenv('DEBUG') == 'True':
 else:
     DEBUG = False
 
-ALLOWED_HOSTS = ['10.1.173.3', '127.0.0.1', 'pracabaza.pl']
+ALLOWED_HOSTS = ['10.1.173.3', '127.0.0.1', 'pracabaza.pl', 'bash-group.work']
 CSRF_TRUSTED_ORIGINS = [
     'http://invilso.pp.ua',
     'http://*.127.0.0.1',
@@ -41,7 +41,11 @@ CSRF_TRUSTED_ORIGINS = [
     'http://pracabaza.pl', 
     'https://pracabaza.pl', 
     'https://*.pracabaza.pl', 
-    'http://*.pracabaza.pl'
+    'http://*.pracabaza.pl',
+    'http://bash-group.work',
+    'https://bash-group.work',
+    'https://*.bash-group.work',
+    'http://*.bash-group.work',
 ]
 
 # Application definition
