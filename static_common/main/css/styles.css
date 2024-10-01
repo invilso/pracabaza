@@ -6,7 +6,7 @@
 }
 .card:hover {
     box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.45); /* Изменение тени при наведении */
-    border-color: #198754;
+    border-color: #0b5ed7;
     -webkit-transition: border-color 0.9s ease-out;
     -moz-transition: border-color  0.9s ease-out;
     -o-transition: border-color  0.9s ease-out;
@@ -19,5 +19,5 @@
 }
 .custom-salary {
     font-weight: bold; /* Сделать зарплату жирным */
-    color: #198754; /* Темносиний цвет */
+    color: #0b5ed7; /* Темносиний цвет */
 }
