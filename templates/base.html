@@ -25,7 +25,7 @@
   </style>
   {% block static %}
   {% endblock static %}
-  <style>
+  {% comment %} <style>
     :root {
         --bs-primary: #0b5ed7; /* Основний зелений колір */
         --bs-secondary: #6c757d;
@@ -67,7 +67,7 @@
     p {
         color: var(--bs-dark);
     }
-</style>
+</style> {% endcomment %}
 </head>
 <body class="d-flex flex-column h-100">
     {% block header %}
