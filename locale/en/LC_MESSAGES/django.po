@@ -170,8 +170,8 @@ msgstr "Legal documents"
 #: info_pages/templates/info_pages/about_us.html:4
 #: info_pages/templates/info_pages/contacts.html:4
 #: info_pages/templates/info_pages/waranties.html:4
-msgid "Silesia - О нас"
-msgstr "Silesia - About Us"
+msgid "BASH - О нас"
+msgstr "BASH - About Us"
 
 #: info_pages/templates/info_pages/about_us.html:201
 msgid "Наша команда"
@@ -245,13 +245,13 @@ msgstr "I want to become a partner"
 
 #: templates/apply_modal.html:44 vacancy/templates/vacancy/list.html:89
 msgid ""
-"Я даю согласие на обработку моих персональных данных компанией Silesia Sp. "
+"Я даю согласие на обработку моих персональных данных компанией BASH Sp. "
 "z.o.o. Предоставление данных является добровольным, но необходимым для "
 "обработка запроса и предоставление услуги. Подробная информация об объеме и "
 "целях обработки данных нами персональные данные и права субъектов данных "
 "можно найти в нашей политике конфиденциальности."
 msgstr ""
-"I consent to the processing of my personal data by Silesia Sp. z.o.o. "
+"I consent to the processing of my personal data by BASH Sp. z.o.o. "
 "Providing data is voluntary, but necessary for  processing the request and "
 "providing the service. Detailed information about the scope and The purposes "
 "of our processing of personal data and the rights of data subjects can be "
@@ -267,8 +267,8 @@ msgstr "Submit your application"
 
 #: templates/base.html:8 vacancy/templates/vacancy/item.html:4
 #: vacancy/templates/vacancy/list.html:4
-msgid "Silesia - Вакансии"
-msgstr "Silesia - Vacancies"
+msgid "BASH - Вакансии"
+msgstr "BASH - Vacancies"
 
 #: templates/base.html:63 vacancy/models.py:278
 msgid "Вакансии"
