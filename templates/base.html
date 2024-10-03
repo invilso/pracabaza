@@ -77,7 +77,7 @@
                 <a class="navbar-brand" href="/">
                     {% comment %} <img src="{% static 'main/img/logo.png' %}"></img> {% endcomment %}
                     {% comment %} <i class="fa-regular fa-briefcase" style="color: #0b5ed7; font-size: 2rem;"></i> {% endcomment %}
-                    <h2 style="color: #FFFFFF; font-size: 2rem;">BASH</h2>
+                    <h2 style="color: #FFFFFF; font-size: 2rem;"></h2>
                 </a>
                 <button class="navbar-toggler navbar-dark" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
@@ -85,9 +85,9 @@
                 <div class="collapse navbar-collapse" id="navbarNav">
                     <ul class="navbar-nav ml-auto">
                         <li class="nav-item {% if selected_nav_name == 'vacancies' %}selected{% endif %}"><a class="nav-link text-white" href="{% url 'vacancy:list' %}">{% translate "Вакансии"%}</a></li>
-                        {% comment %} <li class="nav-item {% if selected_nav_name == 'guaranties' %}selected{% endif %}"><a class="nav-link text-light" href="{% url 'info:waranty' %}">{% translate "Гарантии"%}</a></li> {% endcomment %}
-                        {% comment %} <li class="nav-item {% if selected_nav_name == 'a_us' %}selected{% endif %}"><a class="nav-link text-light" href="{% url 'info:about_us' %}">{% translate "О нас"%}</a></li> {% endcomment %}
-                        {% comment %} <li class="nav-item {% if selected_nav_name == 'contats' %}selected{% endif %}"><a class="nav-link text-light" href="{% url 'info:contacts' %}">{% translate "Контакты"%}</a></li> {% endcomment %}
+                        <li class="nav-item {% if selected_nav_name == 'guaranties' %}selected{% endif %}"><a class="nav-link text-light" href="{% url 'info:waranty' %}">{% translate "Гарантии"%}</a></li>
+                        <li class="nav-item {% if selected_nav_name == 'a_us' %}selected{% endif %}"><a class="nav-link text-light" href="{% url 'info:about_us' %}">{% translate "О нас"%}</a></li>
+                        <li class="nav-item {% if selected_nav_name == 'contats' %}selected{% endif %}"><a class="nav-link text-light" href="{% url 'info:contacts' %}">{% translate "Контакты"%}</a></li>
                         <li class="nav-item d-block d-lg-none">
                             <button class="btn btn-primary btn-block mt-3" data-bs-toggle="modal" data-bs-target="#applyModal">{% translate "Связаться"%}</button>
                         </li>
